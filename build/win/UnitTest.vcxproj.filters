@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{423ec021-c4b5-4f15-9e5b-2e1431e3b29a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\dominion">
+      <UniqueIdentifier>{e8f5b9ff-6a0a-46b1-baec-4ba09b273c9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{b784c720-3c77-4ae1-92bf-b6188fae9782}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\unittest\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\api.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\attributes.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\character.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\database.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\dice.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\perk.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\unittest\dominion\skill.cpp">
+      <Filter>src\dominion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\external\minicsv\minicsv.cpp">
+      <Filter>external</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\unittest\testFramework.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\external\minicsv\minicsv.h">
+      <Filter>external</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

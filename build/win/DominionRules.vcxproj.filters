@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{7dc3b997-93d1-4b31-a00c-5df61eb11531}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{961b7ecb-0439-49c1-8375-63208cccc6c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\core">
+      <UniqueIdentifier>{345935a2-6054-4d2c-8add-fe7772b92621}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\character">
+      <UniqueIdentifier>{4dc3e36e-88ea-425c-b38a-5326ef159573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\character">
+      <UniqueIdentifier>{9a580bd4-2cd6-425b-a123-7ee62a69f217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{6034abde-4e48-461b-a5d0-8a736925fa3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl">
+      <UniqueIdentifier>{5ff3b2f6-9f80-4340-baf5-bab8f285f2ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\api.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\database.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\definitions.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\dice.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\core\platform.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\attributes.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\character.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\character_utility.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\perk.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\skill.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\character\style.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\api_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\attribute_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\character_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\character_utility_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\classid.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\classid_utility.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\data.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\database_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\dice_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\perk_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\skill_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\skill_template.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\style_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\dominion\character\attributes.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\character\character.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\character\character_utility.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\character\perk.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\character\skill.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\character\style.cpp">
+      <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\core\database.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\core\dice.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\api.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\api_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\character_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\character_utility_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\database_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\dice_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\perk_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\skill_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\skill_template.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\impl\style_impl.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
