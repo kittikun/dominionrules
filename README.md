@@ -1,12 +1,12 @@
-dominionrules
+Dominionrules
 =============
 
-Implementation of the Dominion Rules 
+Implementation of the Dominion Rules 3.1
 
 http://dominionrules.org/
 
-Building
-=============
+Windows
+------
 
 Solution files can be found under build/
 
@@ -18,7 +18,11 @@ For example:
 
 BOOST_ROOT=C:\boost_1_57_0 
 
-Linux and BSD builds requires CMake to be installed
+Linux and BSD
+------
+
+Builds requires CMake to be installed
+
 
 Tested on the following platforms:
 - Win8.1, VS2013
