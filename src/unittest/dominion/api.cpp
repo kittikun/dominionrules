@@ -39,9 +39,9 @@ public:
 
 #if defined(_WIN32)
 		if (IsDebuggerPresent())
-			Dominion::Initialise("../../data/dominion");
+			Dominion::Initialise("../../data");
 #else
-		Dominion::Initialise("./data/dominion");
+		Dominion::Initialise("./data");
 #endif
 		auto t2 = std::chrono::high_resolution_clock::now();
 
