@@ -5,7 +5,12 @@ Implementation of the Dominion Rules 3.1
 
 http://dominionrules.org/
 
-Files required to build are located under build/
+Tested on the following platforms:
+- Win8.1, VS2013
+- Unbuntu, 14.01 GCC 4.8
+- FreeBSD, Clang 3.4
+
+Files required to build are located under the build folder
 
 Windows
 -----
@@ -22,9 +27,3 @@ Linux and BSD
 ------
 
 Builds requires CMake to be installed
-
-
-Tested on the following platforms:
-- Win8.1, VS2013
-- Unbuntu, 14.01 GCC 4.8
-- FreeBSD, Clang 3.4
