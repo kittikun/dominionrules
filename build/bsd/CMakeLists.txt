@@ -1,10 +1,14 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(server)
+SET(CMAKE_C_COMPILER /usr/local/bin/clang35)
+SET(CMAKE_CXX_COMPILER /usr/local/bin/clang++35)
+
+project(dominonrules)
+
 set(CMAKE_MODULE_PATH   ${PROJECT_SOURCE_DIR})
 set(ROOT_PATH           ${PROJECT_SOURCE_DIR}/../../)
 set(SRC_PATH            ${ROOT_PATH}/src)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++14")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
@@ -21,12 +25,12 @@ if (Boost_FOUND AND SQLITE3_FOUND)
   set(EXE_PATH            ${SRC_PATH}/server)
   include_directories(${Boost_INCLUDE_DIRS}
 	              ${SQLITE3_INCLUDE_DIR}
-                      ${SRC_PATH}
-                      ${SRC_PATH}/lib)
+                      ${ROOT_PATH}/include
+                      ${SRC_PATH}/external)
 
   set(DOMINION_SRC  ${DOMINION_PATH}/api.cpp
-                    ${DOMINION_PATH}/database.cpp
-                    ${DOMINION_PATH}/dice.cpp
+                    ${DOMINION_PATH}/core/database.cpp
+                    ${DOMINION_PATH}/core/dice.cpp
                     ${DOMINION_PATH}/character/attributes.cpp
                     ${DOMINION_PATH}/character/character.cpp
                     ${DOMINION_PATH}/character/character_utility.cpp
@@ -52,7 +56,7 @@ if (Boost_FOUND AND SQLITE3_FOUND)
                 ${TEST_PATH}/dominion/dice.cpp
                 ${TEST_PATH}/dominion/perk.cpp
                 ${TEST_PATH}/dominion/skill.cpp
-                ${TEST_PATH}/lib/minicsv.cpp)
+                ${SRC_PATH}/external/minicsv/minicsv.cpp)
   add_executable(unittest ${TEST_SRC})
   target_link_libraries(unittest dominion ${Boost_LIBRARIES} ${SQLITE3_LIBRARY})
 
