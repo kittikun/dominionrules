@@ -5,10 +5,10 @@ Implementation of the Dominion Rules 3.1
 
 http://dominionrules.org/
 
-Windows
-------
+Files required to build are located under build/
 
-Solution files can be found under build/
+Windows
+-----
 
 When building for windows, please define the following environment variables:
 
