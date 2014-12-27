@@ -21,7 +21,7 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include <api.h>
+#include <dominion/api.h>
 
 #include <dominion/core/database.h>
 #include <dominion/character/character_utility.h>

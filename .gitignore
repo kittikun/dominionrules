@@ -1,4 +1,7 @@
 build/win/out/
+build/linux/
+bin/
+lib/
 *.csv
 *.sdf
 *.opensdf

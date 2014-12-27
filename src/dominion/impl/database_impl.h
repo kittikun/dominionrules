@@ -32,7 +32,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/functional/hash.hpp>
 #include <boost/filesystem.hpp>
-#include <sqlite/sqlite3.h>
+#include <sqlite3.h>
 
 #include "data.h"
 #include "classid_utility.h"

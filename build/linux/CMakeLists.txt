@@ -21,23 +21,23 @@ if (Boost_FOUND AND SQLITE3_FOUND)
   set(EXE_PATH            ${SRC_PATH}/server)
   include_directories(${Boost_INCLUDE_DIRS}
                       ${SQLITE3_INCLUDE_DIR}
-                      ${SRC_PATH}
-                      ${SRC_PATH}/lib)
+                      ${ROOT_PATH}/include
+                      ${SRC_PATH}/external)
 
   set(DOMINION_SRC  ${DOMINION_PATH}/api.cpp
-                    ${DOMINION_PATH}/database.cpp
-                    ${DOMINION_PATH}/dice.cpp
+                    ${DOMINION_PATH}/core/database.cpp
+                    ${DOMINION_PATH}/core/dice.cpp
                     ${DOMINION_PATH}/character/attributes.cpp
                     ${DOMINION_PATH}/character/character.cpp
-		            ${DOMINION_PATH}/character/character_utility.cpp
+	            ${DOMINION_PATH}/character/character_utility.cpp
                     ${DOMINION_PATH}/character/perk.cpp
-		            ${DOMINION_PATH}/character/skill.cpp
+	            ${DOMINION_PATH}/character/skill.cpp
                     ${DOMINION_PATH}/character/style.cpp
-		            ${DOMINION_PATH}/impl/api_impl.cpp
+	            ${DOMINION_PATH}/impl/api_impl.cpp
                     ${DOMINION_PATH}/impl/character_impl.cpp
-		            ${DOMINION_PATH}/impl/character_utility_impl.cpp
-		            ${DOMINION_PATH}/impl/database_impl.cpp
-		            ${DOMINION_PATH}/impl/dice_impl.cpp
+	            ${DOMINION_PATH}/impl/character_utility_impl.cpp
+	            ${DOMINION_PATH}/impl/database_impl.cpp
+	            ${DOMINION_PATH}/impl/dice_impl.cpp
                     ${DOMINION_PATH}/impl/perk_impl.cpp
                     ${DOMINION_PATH}/impl/skill_impl.cpp
                     ${DOMINION_PATH}/impl/skill_template.cpp
@@ -50,9 +50,9 @@ if (Boost_FOUND AND SQLITE3_FOUND)
                 ${TEST_PATH}/dominion/character.cpp
                 ${TEST_PATH}/dominion/database.cpp
                 ${TEST_PATH}/dominion/dice.cpp
-		        ${TEST_PATH}/dominion/perk.cpp
-		        ${TEST_PATH}/dominion/skill.cpp
-                ${TEST_PATH}/lib/minicsv.cpp)
+	        ${TEST_PATH}/dominion/perk.cpp
+	        ${TEST_PATH}/dominion/skill.cpp
+                ${SRC_PATH}/external/minicsv/minicsv.cpp)
   add_executable(unittest ${TEST_SRC})
   target_link_libraries(unittest dominion ${Boost_LIBRARIES} ${SQLITE3_LIBRARY} dl)
 
