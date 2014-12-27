@@ -7,8 +7,8 @@ http://dominionrules.org/
 
 Tested on the following platforms:
 - Win8.1, VS2013
-- Unbuntu, 14.01 GCC 4.8
-- FreeBSD, Clang 3.4
+- Unbuntu 14.04, 14.01 GCC 4.8
+- FreeBSD 10.1, Clang 3.4
 
 Files required to build are located under the build folder
 
