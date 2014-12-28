@@ -10,10 +10,16 @@ Tested on the following platforms:
 - Unbuntu 14.04, GCC 4.9.2
 - FreeBSD 10.1, Clang 3.5
 
-Files required to build are located under the build folder
+##Build
 
-Windows
------
+Files required to build are located under the *build/* folder
+
+You will need:
+- C++14
+- Boost
+- SQLite
+
+###Windows
 
 When building for windows, please define the following environment variables:
 
@@ -23,7 +29,7 @@ For example:
 
 BOOST_ROOT=C:\boost_1_57_0 
 
-Linux and BSD
-------
+###Linux and BSD
+
 
 Builds requires CMake to be installed
