@@ -7,7 +7,7 @@ http://dominionrules.org/
 
 Tested on the following platforms:
 - Win8.1, VS2013
-- Unbuntu 14.04, GCC 4.9.2
+- Ubuntu 14.04, GCC 4.9.2
 - FreeBSD 10.1, Clang 3.5
 
 ##Build
