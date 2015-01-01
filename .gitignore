@@ -1,5 +1,6 @@
 build/win/out/
 build/linux/
+build/bsd/
 bin/
 lib/
 *.csv

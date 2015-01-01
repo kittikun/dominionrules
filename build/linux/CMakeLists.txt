@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 2.6)
 
+SET(CMAKE_C_COMPILER /usr/bin/gcc-4.9)
+SET(CMAKE_CXX_COMPILER /usr/bin/g++-4.9)
+
 project(server)
 set(CMAKE_MODULE_PATH   ${PROJECT_SOURCE_DIR})
 set(ROOT_PATH           ${PROJECT_SOURCE_DIR}/../../)
