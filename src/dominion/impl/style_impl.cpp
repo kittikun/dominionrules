@@ -31,35 +31,35 @@
 
 namespace Dominion
 {
-    StyleImpl::StyleImpl(const uint_fast32_t id) :
-        Data(id)
-    {}
+	StyleImpl::StyleImpl(const uint_fast32_t id) :
+		DataItem(id)
+	{}
 
-    int StyleImpl::LoadFromDB(void* data, int argc, char** argv, char** col)
-    {
-        DatabaseImpl* db = static_cast<DatabaseImpl*>(data);
-        std::shared_ptr<StyleImpl> style;
+	int StyleImpl::LoadFromDB(void* data, int argc, char** argv, char** col)
+	{
+		DatabaseImpl* db = static_cast<DatabaseImpl*>(data);
+		std::shared_ptr<StyleImpl> style;
 
-        for (int i = 0; i < argc; ++i) {
-            if (argv[i] == nullptr)
-                continue;
+		for (int i = 0; i < argc; ++i) {
+			if (argv[i] == nullptr)
+				continue;
 
-            if (strcmp(col[i], "Id") == 0) {
-                uint_fast32_t id = ClassID_Style + boost::lexical_cast<uint_fast32_t>(argv[i]);
-                style = std::make_shared<StyleImpl>(id);
-            } else if (strcmp(col[i], "name") == 0) {
-                style->name_ = argv[i];
-            } else if (strcmp(col[i], "isPriest") == 0) {
-                style->archetypes_[ArchetypePriest] = boost::lexical_cast<bool>(argv[i]);
-            } else if (strcmp(col[i], "isWitch") == 0) {
-                style->archetypes_[ArchetypeWitch] = boost::lexical_cast<bool>(argv[i]);
-            } else if (strcmp(col[i], "isBeast") == 0) {
-                style->archetypes_[ArchetypeBeast] = boost::lexical_cast<bool>(argv[i]);
-            }
-        }
+			if (strcmp(col[i], "Id") == 0) {
+				uint_fast32_t id = ClassID_Style + boost::lexical_cast<uint_fast32_t>(argv[i]);
+				style = std::make_shared<StyleImpl>(id);
+			} else if (strcmp(col[i], "name") == 0) {
+				style->name_ = argv[i];
+			} else if (strcmp(col[i], "isPriest") == 0) {
+				style->archetypes_[ArchetypePriest] = boost::lexical_cast<bool>(argv[i]);
+			} else if (strcmp(col[i], "isWitch") == 0) {
+				style->archetypes_[ArchetypeWitch] = boost::lexical_cast<bool>(argv[i]);
+			} else if (strcmp(col[i], "isBeast") == 0) {
+				style->archetypes_[ArchetypeBeast] = boost::lexical_cast<bool>(argv[i]);
+			}
+		}
 
-        db->AddData<StyleImpl>(style);
+		db->AddData<StyleImpl>(style);
 
-        return 0;
-    }
+		return 0;
+	}
 } // namespace Dominion

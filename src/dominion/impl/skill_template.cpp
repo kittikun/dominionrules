@@ -32,7 +32,7 @@
 namespace Dominion
 {
 	SkillTemplate::SkillTemplate(const uint_fast32_t id) :
-		Data(id),
+		DataItem(id),
 		target_(-1)
 	{}
 
@@ -48,29 +48,22 @@ namespace Dominion
 			if (strcmp(col[i], "Id") == 0) {
 				uint_fast32_t id = ClassID_Skill_Template + boost::lexical_cast<uint_fast32_t>(argv[i]);
 				skill = std::make_shared<SkillTemplate>(id);
-			}
-			else if (strcmp(col[i], "type") == 0) {
+			} else if (strcmp(col[i], "type") == 0) {
 				skill->type_ = static_cast<ESkillType>(boost::lexical_cast<int32_t>(argv[i]));
-			}
-			else if (strcmp(col[i], "name") == 0) {
+			} else if (strcmp(col[i], "name") == 0) {
 				skill->name_ = argv[i];
-			}
-			else if (strcmp(col[i], "dependency") == 0) {
+			} else if (strcmp(col[i], "dependency") == 0) {
 				skill->dependency_ = static_cast<ESkillDependency>(boost::lexical_cast<int32_t>(argv[i]));
-			}
-			else if (strcmp(col[i], "target") == 0) {
+			} else if (strcmp(col[i], "target") == 0) {
 				skill->target_ = boost::lexical_cast<uint_fast32_t>(argv[i]);
-			}
-			else if (strcmp(col[i], "bySentient") == 0) {
+			} else if (strcmp(col[i], "bySentient") == 0) {
 				skill->usableRace_[ERace::RaceHuman] = boost::lexical_cast<bool>(argv[i]);;
 				skill->usableRace_[ERace::RaceElf] = boost::lexical_cast<bool>(argv[i]);;
 				skill->usableRace_[ERace::RaceDwarf] = boost::lexical_cast<bool>(argv[i]);;
 				skill->usableRace_[ERace::RaceHalfling] = boost::lexical_cast<bool>(argv[i]);;
-			}
-			else if (strcmp(col[i], "byHumanoid") == 0) {
+			} else if (strcmp(col[i], "byHumanoid") == 0) {
 				skill->usableRace_[ERace::RaceHumanoid] = boost::lexical_cast<bool>(argv[i]);;
-			}
-			else if (strcmp(col[i], "byBeast") == 0) {
+			} else if (strcmp(col[i], "byBeast") == 0) {
 				skill->usableRace_[ERace::RaceBeast] = boost::lexical_cast<bool>(argv[i]);;
 			}
 		}

@@ -22,41 +22,11 @@
     <Filter Include="src\impl">
       <UniqueIdentifier>{5ff3b2f6-9f80-4340-baf5-bab8f285f2ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cereal">
+      <UniqueIdentifier>{da19db8e-92a3-4247-a75b-4addbc5bce46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\api.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\database.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\definitions.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\dice.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\platform.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\attributes.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\character.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\character_utility.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\perk.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\skill.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\character\style.h">
-      <Filter>include\character</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dominion\impl\api_impl.h">
       <Filter>src\impl</Filter>
     </ClInclude>
@@ -75,9 +45,6 @@
     <ClInclude Include="..\..\src\dominion\impl\classid_utility.h">
       <Filter>src\impl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dominion\impl\data.h">
-      <Filter>src\impl</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dominion\impl\database_impl.h">
       <Filter>src\impl</Filter>
     </ClInclude>
@@ -94,6 +61,45 @@
       <Filter>src\impl</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\dominion\impl\style_impl.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\core\database.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\core\definitions.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\core\dice.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\core\platform.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\attributes.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\character.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\character_utility.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\perk.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\skill.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\character\style.h">
+      <Filter>include\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\cereal\cereal_boost_uuid.h">
+      <Filter>cereal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\api.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\dataitem.h">
       <Filter>src\impl</Filter>
     </ClInclude>
   </ItemGroup>

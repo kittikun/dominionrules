@@ -39,6 +39,8 @@ namespace Dominion
 	std::unique_ptr<CharacterUtility> DOMINION_API GetCharacterCreationTool();
 	std::shared_ptr<DataBase> DOMINION_API GetDatabase();
 	void DOMINION_API Initialise(const std::string&);
+
+	std::string DOMINION_API test();
 } // namespace Dominion
 
 #endif // API_H

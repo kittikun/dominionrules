@@ -30,7 +30,7 @@
 
 #include <dominion/core/definitions.h>
 
-#include "data.h"
+#include "dataitem.h"
 
 namespace Dominion
 {
@@ -39,7 +39,7 @@ namespace Dominion
 	class SkillImpl;
 	class StyleImpl;
 
-	class CharacterImpl : public Data
+	class CharacterImpl : public DataItem
 	{
 		CharacterImpl(const CharacterImpl&) = delete;
 		CharacterImpl& operator=(const CharacterImpl&) = delete;

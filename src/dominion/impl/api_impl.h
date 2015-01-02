@@ -29,31 +29,33 @@
 
 namespace Dominion
 {
-    class CharacterUtilityImpl;
-    class DataBase;
-    class DatabaseImpl;
-    class Dice;
+	class CharacterUtilityImpl;
+	class DataBase;
+	class DatabaseImpl;
+	class Dice;
 
-    class ApiImpl
-    {
-        ApiImpl(const ApiImpl&) = delete;
-        ApiImpl& operator=(const ApiImpl&) = delete;
-        ApiImpl(ApiImpl&&) = delete;
-        ApiImpl& operator=(ApiImpl&&) = delete;
+	class ApiImpl
+	{
+		ApiImpl(const ApiImpl&) = delete;
+		ApiImpl& operator=(const ApiImpl&) = delete;
+		ApiImpl(ApiImpl&&) = delete;
+		ApiImpl& operator=(ApiImpl&&) = delete;
 
-    public:
-        ApiImpl();
+	public:
+		ApiImpl();
 
-        static ApiImpl& instance();
+		static ApiImpl& instance();
 
-        void LoadDatabase(const std::string& dataPath);
-        std::unique_ptr<CharacterUtilityImpl> MakeCharacterTool() const;
+		void LoadDatabase(const std::string& dataPath);
+		std::unique_ptr<CharacterUtilityImpl> MakeCharacterTool() const;
 
-        std::shared_ptr<DataBase> database() const;
+		std::shared_ptr<DataBase> database() const;
 
-    private:
-        std::shared_ptr<DatabaseImpl> db_;
-    };
+		std::string test();
+
+	private:
+		std::shared_ptr<DatabaseImpl> db_;
+	};
 } // namespace Dominion
 
 #endif // API_IMPL_H

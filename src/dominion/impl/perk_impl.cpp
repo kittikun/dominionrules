@@ -31,7 +31,7 @@
 namespace Dominion
 {
 	PerkImpl::PerkImpl(const uint_fast32_t id) :
-		Data(id),
+		DataItem(id),
 		bonus_(0),
 		target_(-1)
 	{}

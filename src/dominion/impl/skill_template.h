@@ -28,11 +28,11 @@
 
 #include <dominion/core/definitions.h>
 
-#include "data.h"
+#include "dataitem.h"
 
 namespace Dominion
 {
-	class SkillTemplate : public Data
+	class SkillTemplate : public DataItem
 	{
 		SkillTemplate(const SkillTemplate&) = delete;
 		SkillTemplate& operator=(const SkillTemplate&) = delete;

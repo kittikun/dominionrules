@@ -45,4 +45,9 @@ namespace Dominion
 	{
 		return ApiImpl::instance().database();
 	}
+
+	std::string DOMINION_API test()
+	{
+		return ApiImpl::instance().test();
+	}
 } // namespace Dominion

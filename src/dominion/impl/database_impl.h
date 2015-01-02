@@ -34,7 +34,7 @@
 #include <boost/filesystem.hpp>
 #include <sqlite3.h>
 
-#include "data.h"
+#include "dataitem.h"
 #include "classid_utility.h"
 
 namespace Dominion
@@ -57,7 +57,7 @@ namespace Dominion
 		template <typename T>
 		void AddData(std::shared_ptr<typename ClassIDUtility<T>::ImplType> data)
 		{
-			std::shared_ptr<Data> tmp = std::static_pointer_cast<Data>(data);
+			std::shared_ptr<DataItem> tmp = std::static_pointer_cast<DataItem>(data);
 
 			tmp->db_ = shared_from_this();
 			ClassIDUtility<T>::set_next(tmp->guid());
@@ -73,7 +73,7 @@ namespace Dominion
 		template <typename T>
 		std::vector<std::shared_ptr<T>> GetList(const std::string& query) const
 		{
-			typedef std::unordered_map<uint_fast32_t, std::shared_ptr<Data>> DictionaryType;
+			typedef std::unordered_map<uint_fast32_t, std::shared_ptr<DataItem>> DictionaryType;
 			typedef std::vector <std::shared_ptr<T>> ResultType;
 			typedef std::tuple<const DictionaryType&, ResultType&> TupleType;
 
@@ -110,7 +110,7 @@ namespace Dominion
 		void ExecuteQuery(const std::string&, SQLiteCallback) const;
 
 	private:
-		std::unordered_map<uint_fast32_t, std::shared_ptr<Data>> database_;
+		std::unordered_map<uint_fast32_t, std::shared_ptr<DataItem>> database_;
 		sqlite3* dbConnection;
 	};
 } // namespace Dominion

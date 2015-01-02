@@ -21,38 +21,44 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DATA_H
-#define DATA_H
+#ifndef DATAITEM_H
+#define DATAITEM_H
 
 #include <cstdint>
 #include <memory>
 
 namespace Dominion
 {
-    class DatabaseImpl;
+	class DatabaseImpl;
 
-    class Data
-    {
-        friend class DatabaseImpl;
+	class DataItem
+	{
+		friend class DatabaseImpl;
 
-        Data(const Data&) = delete;
-        Data& operator=(const Data&) = delete;
-        Data(Data&&) = delete;
-        Data& operator=(Data&&) = delete;
+		DataItem(const DataItem&) = delete;
+		DataItem& operator=(const DataItem&) = delete;
+		DataItem(DataItem&&) = delete;
+		DataItem& operator=(DataItem&&) = delete;
 
-    public:
-        Data(uint_fast32_t guid) :
-            guid_(guid)
-        {}
+	public:
+		DataItem(uint_fast32_t guid) :
+			guid_(guid)
+		{}
 
-        const uint_fast32_t guid() const { return guid_; }
+		const uint_fast32_t guid() const { return guid_; }
 
-    protected:
-        std::weak_ptr < DatabaseImpl > db_;
+		template <class Archive>
+		void serialize(Archive & ar)
+		{
+			ar(CEREAL_NVP(guid_));
+		}
 
-    private:
-        uint_fast32_t guid_;
-    };
+	protected:
+		std::weak_ptr < DatabaseImpl > db_;
+
+	private:
+		uint_fast32_t guid_;
+	};
 }
 
-#endif // DATA_H
+#endif // DATAITEM_H

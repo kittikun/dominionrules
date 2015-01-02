@@ -29,13 +29,13 @@
 
 #include <dominion/core/definitions.h>
 
-#include "data.h"
+#include "dataitem.h"
 
 namespace Dominion
 {
 	class DatabaseImpl;
 
-	class PerkImpl : public Data
+	class PerkImpl : public DataItem
 	{
 		PerkImpl(const PerkImpl&) = delete;
 		PerkImpl& operator=(const PerkImpl&) = delete;

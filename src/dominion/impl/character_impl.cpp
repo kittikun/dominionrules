@@ -29,7 +29,7 @@
 namespace Dominion
 {
 	CharacterImpl::CharacterImpl(const uint_fast32_t id) :
-		Data{ id },
+		DataItem{ id },
 		race_{ RaceCount },
 		// (DR3.1.1 p31, 4-7 STEP FIVE: DETERMINE YOUR ADVANCEMENT POINTS)
 		// All starting characters are given 45 Advancement

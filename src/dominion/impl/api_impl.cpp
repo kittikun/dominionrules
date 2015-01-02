@@ -24,7 +24,9 @@
 #include "api_impl.h"
 
 #include <numeric>
+#include <sstream>
 #include <boost/filesystem.hpp>
+#include <cereal/archives/json.hpp>
 
 #include <dominion/core/database.h>
 #include <dominion/character/character_utility.h>
@@ -76,5 +78,17 @@ namespace Dominion
 	std::unique_ptr<CharacterUtilityImpl> ApiImpl::MakeCharacterTool() const
 	{
 		return std::unique_ptr<CharacterUtilityImpl>(new CharacterUtilityImpl{ db_ });
+	}
+
+	std::string ApiImpl::test()
+	{
+		auto list = db_->GetList<StyleImpl>("select id from style");
+
+		std::stringstream ss;
+		cereal::JSONOutputArchive oarchive(ss);
+
+		oarchive(*list[0]);
+
+		return ss.str();
 	}
 } // namespace Dominion

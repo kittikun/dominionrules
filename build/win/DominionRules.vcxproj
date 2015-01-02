@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
@@ -107,7 +107,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
@@ -125,7 +125,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -144,7 +144,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -157,25 +157,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\api.h" />
-    <ClInclude Include="..\..\include\character\attributes.h" />
-    <ClInclude Include="..\..\include\character\character.h" />
-    <ClInclude Include="..\..\include\character\character_utility.h" />
-    <ClInclude Include="..\..\include\character\perk.h" />
-    <ClInclude Include="..\..\include\character\skill.h" />
-    <ClInclude Include="..\..\include\character\style.h" />
-    <ClInclude Include="..\..\include\core\database.h" />
-    <ClInclude Include="..\..\include\core\definitions.h" />
-    <ClInclude Include="..\..\include\core\dice.h" />
-    <ClInclude Include="..\..\include\core\platform.h" />
+    <ClInclude Include="..\..\include\dominion\api.h" />
+    <ClInclude Include="..\..\include\dominion\character\attributes.h" />
+    <ClInclude Include="..\..\include\dominion\character\character.h" />
+    <ClInclude Include="..\..\include\dominion\character\character_utility.h" />
+    <ClInclude Include="..\..\include\dominion\character\perk.h" />
+    <ClInclude Include="..\..\include\dominion\character\skill.h" />
+    <ClInclude Include="..\..\include\dominion\character\style.h" />
+    <ClInclude Include="..\..\include\dominion\core\database.h" />
+    <ClInclude Include="..\..\include\dominion\core\definitions.h" />
+    <ClInclude Include="..\..\include\dominion\core\dice.h" />
+    <ClInclude Include="..\..\include\dominion\core\platform.h" />
+    <ClInclude Include="..\..\src\dominion\cereal\cereal_boost_uuid.h" />
     <ClInclude Include="..\..\src\dominion\impl\api_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\attribute_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\character_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\character_utility_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\classid.h" />
     <ClInclude Include="..\..\src\dominion\impl\classid_utility.h" />
-    <ClInclude Include="..\..\src\dominion\impl\data.h" />
     <ClInclude Include="..\..\src\dominion\impl\database_impl.h" />
+    <ClInclude Include="..\..\src\dominion\impl\dataitem.h" />
     <ClInclude Include="..\..\src\dominion\impl\dice_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\perk_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\skill_impl.h" />
