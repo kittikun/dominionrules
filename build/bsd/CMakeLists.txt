@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 
-SET(CMAKE_C_COMPILER /usr/local/bin/clang35)
-SET(CMAKE_CXX_COMPILER /usr/local/bin/clang++35)
+SET(CMAKE_C_COMPILER /usr/bin/clang)
+SET(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
 project(dominonrules)
 

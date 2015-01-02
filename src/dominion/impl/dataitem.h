@@ -26,6 +26,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <cereal/cereal.hpp>
 
 namespace Dominion
 {

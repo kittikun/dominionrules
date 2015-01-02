@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6)
 
-SET(CMAKE_C_COMPILER /usr/bin/gcc-4.9)
-SET(CMAKE_CXX_COMPILER /usr/bin/g++-4.9)
+SET(CMAKE_C_COMPILER /usr/bin/gcc)
+SET(CMAKE_CXX_COMPILER /usr/bin/g++)
 
 project(server)
 set(CMAKE_MODULE_PATH   ${PROJECT_SOURCE_DIR})
@@ -16,7 +16,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${ROOT_PATH}/bin)
 find_package(Boost COMPONENTS chrono system filesystem log thread unit_test_framework REQUIRED)
 find_package(SQLite3 REQUIRED)
 
-if (Boost_FOUND AND SQLITE3_FOUND)
   add_definitions(-DBOOST_ALL_DYN_LINK -DDOMINION_DATAGEN -DSQLITE_THREADSAFE)
 
   set(DOMINION_PATH       ${SRC_PATH}/dominion)
@@ -59,4 +58,3 @@ if (Boost_FOUND AND SQLITE3_FOUND)
   add_executable(unittest ${TEST_SRC})
   target_link_libraries(unittest dominion ${Boost_LIBRARIES} ${SQLITE3_LIBRARY} dl)
 
-endif(Boost_FOUND AND SQLITE3_FOUND)

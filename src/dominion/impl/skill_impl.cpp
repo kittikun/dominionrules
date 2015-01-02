@@ -48,7 +48,7 @@ namespace Dominion
 			780, 820, 861, 903, 946, 990, 1035, 1081, 1128, 1176, 1225,
 			1275, 1326, 1378, 1431 };
 
-		if ((level_ + static_cast<uint_fast8_t>(1)) >= costPerLevel.size())
+		if (static_cast<uint_fast16_t>(level_ + 1) >= costPerLevel.size())
 			throw std::out_of_range("Requested level is too high");
 
 		return costPerLevel[level_ + 1] - costPerLevel[level_];
