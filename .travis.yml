@@ -1,5 +1,13 @@
 language: cpp
 compiler:
- - clang
- - gcc
-script: ./run_build.sh
+- clang
+- gcc
+deploy:
+  provider: biicode
+  user: kittikun
+  password:
+    secure: EwX/8X4UKKumrKpO6EzH0mCCeg4911tKHJybTX5Ek3MY0lYfK09i6d5hvEvjnUWbWCODqOEqIaBNJ1vBass2blx40eSmYsWLfn/X3P1fI7X7x/B6uhDlw+CNKGI3V7/8cXwW98q8R1YiMc0zwsNyCv4ak/tWbvOHnjm1eGl2Lzs=
+  on:
+    tags: true
+    repo: kittikun/dominionrules
+    branch: develop
