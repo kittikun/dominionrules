@@ -32,6 +32,6 @@ script:
 - mv !(dyn) ./dyn/blocks/kittikun/dominionrules
 - cd dyn
 - bii find -um
-- bii cpp:build -- VERBOSE=1
+- bii cpp:build
 
 
