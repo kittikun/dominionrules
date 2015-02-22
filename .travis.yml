@@ -12,11 +12,32 @@ deploy:
     repo: kittikun/dominionrules
     branch: develop
 before_install:
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-sudo apt-get update -qq
-if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; fi
-if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
-if [ "$CXX" = "clang" ]; then sudo apt-get install -qq clang-3.5; fi
-if [ "$CXX" = "clang" ]; then export CXX="clang-3.5" CC="clang-3.5"; fi
+- echo $CXX
+- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+- sudo apt-get update -qq
+- if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.9; fi
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+- if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
+- if [ "$CXX" = "clang" ]; then sudo apt-get install -qq clang-3.5; fi
+- if [ "$CXX" = "clang" ]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
+- if [ "$CXX" = "clang" ]; then sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.5 90; fi
+
+install:
+- wget http://www.biicode.com/downloads/latest/ubuntu64
+- mv ubuntu64 bii-ubuntu64.deb
+- (sudo dpkg -i bii-ubuntu64.deb) && sudo apt-get -f install
+- rm bii-ubuntu64.deb
+- wget https://s3.amazonaws.com/biibinaries/thirdparty/cmake-3.0.2-Linux-64.tar.gz
+- tar -xzf cmake-3.0.2-Linux-64.tar.gz
+- sudo cp -fR cmake-3.0.2-Linux-64/* /usr
+- rm -rf cmake-3.0.2-Linux-64
+- rm cmake-3.0.2-Linux-64.tar.gz
+script:
+- cmake --version
+- bii init dyn
+- bii new kittikun/dominionrules
+- cd dyn
+- bii find -um
+- bii cpp:build
 
 
