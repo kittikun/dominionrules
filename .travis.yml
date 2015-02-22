@@ -14,8 +14,8 @@ deploy:
 before_install:
 - echo $CXX
 - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-- sudo apt-get update -q
-- if [ "$CXX" = "g++" ]; then sudo apt-get install -q g++-4.9; fi
+- sudo apt-get update
+- if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.9; fi
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
 - if [ "$CXX" = "g++" ]; then sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 90; fi
 
@@ -32,8 +32,9 @@ install:
 script:
 - cmake --version
 - bii init dyn
+- mkdir -p ./dyn/blocks/kittikun/dominionrules
+- mv !(dyn) ./dyn/blocks/kittikun/dominionrules
 - cd dyn
-- bii new kittikun/dominionrules
 - bii find -um
 - bii cpp:build
 
