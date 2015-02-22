@@ -31,7 +31,7 @@ script:
 - mkdir -p ./dyn/blocks/kittikun/dominionrules
 - mv !(dyn) ./dyn/blocks/kittikun/dominionrules
 - cd dyn
-- bii find -um
-- travis_wait bii cpp:build
+- bii cpp:configure -DBII_BOOST_BUILD_J=16
+- bii cpp:build
 
 
