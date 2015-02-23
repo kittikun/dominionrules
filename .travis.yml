@@ -25,13 +25,14 @@ install:
 - sudo cp -fR cmake-3.0.2-Linux-64/* /usr
 - rm -rf cmake-3.0.2-Linux-64
 - rm cmake-3.0.2-Linux-64.tar.gz
-before_script:
+script:
 - cmake --version
 - bii init dyn
 - mkdir -p ./dyn/blocks/kittikun/dominionrules
 - mv !(dyn) ./dyn/blocks/kittikun/dominionrules
 - cd dyn
-
-script: travis_wait bii cpp:build
+- travis_wait bii cpp:configure
+- bii cpp:build
+- ./bin/kittikun_dominionrules_src_unittest_main
 
 

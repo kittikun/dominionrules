@@ -39,7 +39,7 @@ namespace DominionTest
 	class CharacterTest : public testing::Test
 	{
 	public:
-		CharacterTest::CharacterTest() :
+		CharacterTest() :
 			db_(Dominion::GetDatabase())
 
 		{
@@ -115,7 +115,7 @@ namespace DominionTest
 
 		auto npc = cTool->MakeCharacter();
 
-		EXPECT_TRUE(npc);
+		EXPECT_TRUE(static_cast<bool>(npc));
 	}
 
 	TEST_F(CharacterTest, CreateElfWitch)
@@ -146,7 +146,7 @@ namespace DominionTest
 
 		auto npc = cTool->MakeCharacter();
 
-		EXPECT_TRUE(npc);
+		EXPECT_TRUE(static_cast<bool>(npc));
 	}
 
 	TEST_F(CharacterTest, CreateDwarfPriest)
@@ -177,6 +177,6 @@ namespace DominionTest
 
 		auto npc = cTool->MakeCharacter();
 
-		EXPECT_TRUE(npc);
+		EXPECT_TRUE(static_cast<bool>(npc));
 	}
 } // namespace DominionTest
