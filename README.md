@@ -3,6 +3,8 @@ Dominionrules
 
 ![Build Status](https://travis-ci.org/kittikun/dominionrules.svg?branch=develop)
 
+[![Build Status](https://webapi.biicode.com/v1/badges/kittikun/kittikun/dominionrules/master)](https://www.biicode.com/kittikun/dominionrules) 
+
 Implementation of the Dominion Rules 3.1
 
 http://dominionrules.org/
