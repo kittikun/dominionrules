@@ -91,7 +91,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CEREAL_ROOT)\include;$(BOOST_ROOT);$(SQLITE_ROOT);$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
@@ -107,7 +107,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CEREAL_ROOT)\include;$(BOOST_ROOT);$(SQLITE_ROOT);$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
@@ -125,7 +125,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CEREAL_ROOT)\include;$(BOOST_ROOT);$(SQLITE_ROOT);$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -144,7 +144,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\src\external\sqlite;$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(CEREAL_ROOT)\include;$(BOOST_ROOT);$(SQLITE_ROOT);$(SolutionDir)\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>EXPORT_DOMINION_API;SQLITE_THREADSAFE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -176,6 +176,7 @@
     <ClInclude Include="..\..\src\dominion\impl\classid.h" />
     <ClInclude Include="..\..\src\dominion\impl\classid_utility.h" />
     <ClInclude Include="..\..\src\dominion\impl\database_impl.h" />
+    <ClInclude Include="..\..\src\dominion\impl\database_source.h" />
     <ClInclude Include="..\..\src\dominion\impl\dataitem.h" />
     <ClInclude Include="..\..\src\dominion\impl\dice_impl.h" />
     <ClInclude Include="..\..\src\dominion\impl\perk_impl.h" />

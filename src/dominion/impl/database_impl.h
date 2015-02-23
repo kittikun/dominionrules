@@ -1,4 +1,4 @@
-// Copyright(C) 2014 kittikun
+// Copyright(C) 2015 kittikun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
@@ -52,7 +52,8 @@ namespace Dominion
 		DatabaseImpl();
 		~DatabaseImpl();
 
-		void ConnectDatabase(boost::filesystem::path path);
+		void OpenDatabaseFromFile(boost::filesystem::path);
+		void OpenDatabaseFromMemory();
 
 		template <typename T>
 		void AddData(std::shared_ptr<typename ClassIDUtility<T>::ImplType> data)
@@ -78,7 +79,6 @@ namespace Dominion
 			typedef std::tuple<const DictionaryType&, ResultType&> TupleType;
 
 			int rc;
-			char *err = nullptr;
 
 			ResultType res;
 
@@ -96,7 +96,7 @@ namespace Dominion
 				return 0;
 			};
 
-			rc = sqlite3_exec(dbConnection, query.c_str(), f, static_cast<void*>(&tuple), &err);
+			rc = sqlite3_exec(db_, query.c_str(), f, static_cast<void*>(&tuple), nullptr);
 
 			if (rc) {
 				throw std::runtime_error("Query returned with an error");
@@ -111,7 +111,8 @@ namespace Dominion
 
 	private:
 		std::unordered_map<uint_fast32_t, std::shared_ptr<DataItem>> database_;
-		sqlite3* dbConnection;
+		sqlite3* db_;
+		uint_fast32_t version_;
 	};
 } // namespace Dominion
 

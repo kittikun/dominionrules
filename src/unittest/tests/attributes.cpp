@@ -21,37 +21,43 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef SKILL_TEMPLATE_H
-#define SKILL_TEMPLATE_H
+#include <gtest/gtest.h>
+#include <memory>
+#include <numeric>
 
-#include <bitset>
+#include <dominion/api.h>
+#include <dominion/character/attributes.h>
+#include <dominion/character/character_utility.h>
+#include <dominion/core/dice.h>
 
-#include <dominion/core/definitions.h>
-
-#include "dataitem.h"
-
-namespace Dominion
+namespace DominionTest
 {
-	class SkillTemplate : public DataItem
+	class AttributeTest : public testing::Test
 	{
-		SkillTemplate(const SkillTemplate&) = delete;
-		SkillTemplate& operator=(const SkillTemplate&) = delete;
-		SkillTemplate(SkillTemplate&&) = delete;
-		SkillTemplate& operator=(SkillTemplate&&) = delete;
+	public:
+		AttributeTest() :
+			cTool_(Dominion::GetCharacterCreationTool())
+		{
+		}
 
 	public:
-		SkillTemplate(const uint_fast32_t id);
-
-		static int LoadFromDB(void*, int, char**, char**);
-
-	public:
-		// Main attribute governing the skill
-		ESkillDependency dependency_;
-		std::string name_;
-		ESkillType type_;
-		int32_t target_;
-		std::bitset<ERace::RaceCount> usableRace_;
+		std::unique_ptr<Dominion::CharacterUtility> cTool_;
 	};
-} // namespace Dominion
 
-#endif // SKILL_TEMPLATE_H
+	TEST_F(AttributeTest, GetBaseAttributes)
+	{
+		auto attribs = cTool_->attributesBase();
+
+		EXPECT_EQ(std::accumulate(std::begin(attribs), std::end(attribs), 0), Dominion::EAttribute::AttributeCount);
+	}
+
+	TEST_F(AttributeTest, GetAttributeRoll)
+	{
+		std::shared_ptr<Dominion::Dice> dice = std::make_shared<Dominion::Dice>();
+
+		auto aRoll = cTool_->attributesRoll(dice);
+
+		EXPECT_GT(std::get<0>(*aRoll), 0);
+		EXPECT_GE(std::get<1>(*aRoll), 0);
+	}
+} // namespace DominionTest

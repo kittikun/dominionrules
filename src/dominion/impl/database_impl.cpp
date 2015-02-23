@@ -1,4 +1,4 @@
-// Copyright(C) 2014 kittikun
+// Copyright(C) 2015 kittikun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
@@ -22,67 +22,84 @@
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
 #include "database_impl.h"
+#include "database_source.h"
 
 #include "perk_impl.h"
 
 namespace Dominion
 {
-    DatabaseImpl::DatabaseImpl() :
-        dbConnection{nullptr}
-    {}
+	DatabaseImpl::DatabaseImpl() :
+		db_{ nullptr },
+		version_(1)
+	{}
 
-    DatabaseImpl::~DatabaseImpl()
-    {
-        if (dbConnection != nullptr) {
-            sqlite3_close(dbConnection);
-            dbConnection = nullptr;
-        }
-    }
+	DatabaseImpl::~DatabaseImpl()
+	{
+		if (db_ != nullptr) {
+			sqlite3_close(db_);
+			db_ = nullptr;
+		}
+	}
 
-    void DatabaseImpl::ConnectDatabase(boost::filesystem::path path)
-    {
-        int rc;
-        rc = sqlite3_open(path.string().c_str(), &dbConnection);
+	void DatabaseImpl::OpenDatabaseFromFile(boost::filesystem::path path)
+	{
+		int rc;
+		rc = sqlite3_open(path.string().c_str(), &db_);
 
-        if (rc) {
-            boost::format err = boost::format("Couldn't open database: %1%") % sqlite3_errmsg(dbConnection);
-            throw std::runtime_error(boost::str(err));
-        }
-    }
+		if (rc) {
+			boost::format err = boost::format("Couldn't open database: %1%") % sqlite3_errmsg(db_);
+			throw std::runtime_error(boost::str(err));
+		}
+	}
 
-    void DatabaseImpl::ExecuteQuery(const std::string& query, SQLiteCallback callback) const
-    {
-        int rc;
-        char*err = nullptr;
-        void* ptr = reinterpret_cast<void*>(const_cast<DatabaseImpl*>(this));
+	void DatabaseImpl::OpenDatabaseFromMemory()
+	{
+		int rc;
+		rc = sqlite3_open(":memory:", &db_);
 
-        rc = sqlite3_exec(dbConnection, query.c_str(), callback, ptr, &err);
+		if (rc) {
+			boost::format err = boost::format("Couldn't open database: %1%") % sqlite3_errmsg(db_);
+			throw std::runtime_error(boost::str(err));
+		}
 
-        if (rc) {
-            throw std::runtime_error("Query returned with an error");
-        }
-    }
+		rc = sqlite3_exec(db_, reinterpret_cast<const char*>(dominionDB_sql), nullptr, nullptr, nullptr);
 
-    uint_fast32_t DatabaseImpl::GetIntValue(const std::string& query) const
-    {
-        int rc;
-        char *err = nullptr;
-        uint_fast32_t res;
+		if (rc) {
+			throw std::runtime_error("Query returned with an error");
+		}
+	}
 
-        auto f = [](void* data, int, char** argv, char**) {
-            uint_fast32_t* res = static_cast<uint_fast32_t*>(data);
+	void DatabaseImpl::ExecuteQuery(const std::string& query, SQLiteCallback callback) const
+	{
+		int rc;
+		void* ptr = reinterpret_cast<void*>(const_cast<DatabaseImpl*>(this));
 
-            *res = boost::lexical_cast<uint_fast32_t>(argv[0]);
+		rc = sqlite3_exec(db_, query.c_str(), callback, ptr, nullptr);
 
-            return 0;
-        };
+		if (rc) {
+			throw std::runtime_error("Query returned with an error");
+		}
+	}
 
-        rc = sqlite3_exec(dbConnection, query.c_str(), f, static_cast<void*>(&res), &err);
+	uint_fast32_t DatabaseImpl::GetIntValue(const std::string& query) const
+	{
+		int rc;
+		uint_fast32_t res;
 
-        if (rc) {
-            throw std::runtime_error("Query returned with an error");
-        }
+		auto f = [](void* data, int, char** argv, char**) {
+			uint_fast32_t* res = static_cast<uint_fast32_t*>(data);
 
-        return res;
-    }
+			*res = boost::lexical_cast<uint_fast32_t>(argv[0]);
+
+			return 0;
+		};
+
+		rc = sqlite3_exec(db_, query.c_str(), f, static_cast<void*>(&res), nullptr);
+
+		if (rc) {
+			throw std::runtime_error("Query returned with an error");
+		}
+
+		return res;
+	}
 } // namespace Dominion

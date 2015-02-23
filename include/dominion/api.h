@@ -1,4 +1,4 @@
-// Copyright(C) 2014 kittikun
+// Copyright(C) 2015 kittikun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
@@ -38,7 +38,8 @@ namespace Dominion
 
 	std::unique_ptr<CharacterUtility> DOMINION_API GetCharacterCreationTool();
 	std::shared_ptr<DataBase> DOMINION_API GetDatabase();
-	void DOMINION_API Initialise(const std::string&);
+	void DOMINION_API InitialiseFromFile(const std::string&);
+	void DOMINION_API InitializeFromMemory();
 
 	std::string DOMINION_API test();
 } // namespace Dominion

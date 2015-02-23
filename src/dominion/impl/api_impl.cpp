@@ -1,4 +1,4 @@
-// Copyright(C) 2014 kittikun
+// Copyright(C) 2015 kittikun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
@@ -55,7 +55,7 @@ namespace Dominion
 		return instance;
 	}
 
-	void ApiImpl::LoadDatabase(const std::string& dataPath)
+	void ApiImpl::LoadDatabaseFromFile(const std::string& dataPath)
 	{
 		boost::filesystem::path path(dataPath);
 		boost::filesystem::path file("dominion.db");
@@ -64,7 +64,7 @@ namespace Dominion
 		canonical = canonical.make_preferred();
 
 		if (boost::filesystem::exists(canonical)) {
-			db_->ConnectDatabase(canonical);
+			db_->OpenDatabaseFromFile(canonical);
 
 			// create data structure from db_ info
 			db_->ExecuteQuery("select * from perk", PerkImpl::LoadFromDB);
@@ -73,6 +73,16 @@ namespace Dominion
 		} else {
 			throw std::invalid_argument("Invalid path to database");
 		}
+	}
+
+	void ApiImpl::LoadDatabaseFromMemory()
+	{
+		db_->OpenDatabaseFromMemory();
+
+		// create data structure from db_ info
+		db_->ExecuteQuery("select * from perk", PerkImpl::LoadFromDB);
+		db_->ExecuteQuery("select * from skill", SkillTemplate::LoadFromDB);
+		db_->ExecuteQuery("select * from style", StyleImpl::LoadFromDB);
 	}
 
 	std::unique_ptr<CharacterUtilityImpl> ApiImpl::MakeCharacterTool() const

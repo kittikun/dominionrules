@@ -1,4 +1,4 @@
-// Copyright(C) 2014 kittikun
+// Copyright(C) 2015 kittikun
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal

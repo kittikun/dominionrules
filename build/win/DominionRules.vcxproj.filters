@@ -102,6 +102,9 @@
     <ClInclude Include="..\..\src\dominion\impl\dataitem.h">
       <Filter>src\impl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dominion\impl\database_source.h">
+      <Filter>src\impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dominion\character\attributes.cpp">

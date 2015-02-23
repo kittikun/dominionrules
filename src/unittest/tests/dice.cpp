@@ -21,37 +21,31 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef SKILL_TEMPLATE_H
-#define SKILL_TEMPLATE_H
+#include <gtest/gtest.h>
+#include <memory>
 
-#include <bitset>
+#include <dominion/core/dice.h>
 
-#include <dominion/core/definitions.h>
-
-#include "dataitem.h"
-
-namespace Dominion
+namespace DominionTest
 {
-	class SkillTemplate : public DataItem
+	class DiceTest : public testing::Test
 	{
-		SkillTemplate(const SkillTemplate&) = delete;
-		SkillTemplate& operator=(const SkillTemplate&) = delete;
-		SkillTemplate(SkillTemplate&&) = delete;
-		SkillTemplate& operator=(SkillTemplate&&) = delete;
+	public:
+		DiceTest() :
+			dice_(new Dominion::Dice())
+		{
+		}
 
 	public:
-		SkillTemplate(const uint_fast32_t id);
-
-		static int LoadFromDB(void*, int, char**, char**);
-
-	public:
-		// Main attribute governing the skill
-		ESkillDependency dependency_;
-		std::string name_;
-		ESkillType type_;
-		int32_t target_;
-		std::bitset<ERace::RaceCount> usableRace_;
+		std::unique_ptr<Dominion::Dice> dice_;
 	};
-} // namespace Dominion
 
-#endif // SKILL_TEMPLATE_H
+	TEST_F(DiceTest, Roll)
+	{
+		uint_fast8_t rnd;
+
+		rnd = dice_->Roll();
+
+		EXPECT_TRUE((rnd > 0) && (rnd <= 12));
+	}
+} // namespace DominionTest

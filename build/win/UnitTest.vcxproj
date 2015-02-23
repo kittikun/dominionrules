@@ -18,6 +18,12 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\unittest\main.cpp" />
+    <ClCompile Include="..\..\src\unittest\tests\attributes.cpp" />
+    <ClCompile Include="..\..\src\unittest\tests\character.cpp" />
+    <ClCompile Include="..\..\src\unittest\tests\dice.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4D02765B-032A-4D15-BEDA-67D99B1A2211}</ProjectGuid>
     <RootNamespace>UnitTest</RootNamespace>
@@ -86,15 +92,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib32-msvc-12.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GTEST_ROOT);$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib32-msvc-12.0</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>DominionRules.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DominionRules.lib;gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,15 +108,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib64-msvc-12.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GTEST_ROOT);$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib64-msvc-12.0</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>DominionRules.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DominionRules.lib;gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,16 +126,16 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib32-msvc-12.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GTEST_ROOT);$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib32-msvc-12.0</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>DominionRules.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DominionRules.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,33 +145,18 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(SolutionDir)\..\..\src\external;$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib64-msvc-12.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GTEST_ROOT);$(SolutionDir)..\..\bin\$(platform)\;$(BOOST_ROOT)\lib64-msvc-12.0</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>DominionRules.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DominionRules.lib;gtest.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\external\minicsv\minicsv.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\api.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\attributes.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\character.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\database.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\dice.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\perk.cpp" />
-    <ClCompile Include="..\..\src\unittest\dominion\skill.cpp" />
-    <ClCompile Include="..\..\src\unittest\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\external\minicsv\minicsv.h" />
-    <ClInclude Include="..\..\src\unittest\testFramework.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

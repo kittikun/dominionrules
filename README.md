@@ -25,6 +25,9 @@ You will need:
 When building for windows, please define the following environment variables:
 
 BOOST_ROOT
+CEREAL_ROOT
+SQLITE_ROOT
+GTEST_ROOT
 
 For example:
 

@@ -21,37 +21,14 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef SKILL_TEMPLATE_H
-#define SKILL_TEMPLATE_H
+#include <dominion/api.h>
+#include <gtest/gtest.h>
 
-#include <bitset>
-
-#include <dominion/core/definitions.h>
-
-#include "dataitem.h"
-
-namespace Dominion
+int main(int argc, char **argv)
 {
-	class SkillTemplate : public DataItem
-	{
-		SkillTemplate(const SkillTemplate&) = delete;
-		SkillTemplate& operator=(const SkillTemplate&) = delete;
-		SkillTemplate(SkillTemplate&&) = delete;
-		SkillTemplate& operator=(SkillTemplate&&) = delete;
+	testing::InitGoogleTest(&argc, argv);
 
-	public:
-		SkillTemplate(const uint_fast32_t id);
+	Dominion::InitializeFromMemory();
 
-		static int LoadFromDB(void*, int, char**, char**);
-
-	public:
-		// Main attribute governing the skill
-		ESkillDependency dependency_;
-		std::string name_;
-		ESkillType type_;
-		int32_t target_;
-		std::bitset<ERace::RaceCount> usableRace_;
-	};
-} // namespace Dominion
-
-#endif // SKILL_TEMPLATE_H
+	return RUN_ALL_TESTS();
+}
