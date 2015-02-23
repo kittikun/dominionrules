@@ -1,5 +1,7 @@
-Dominionrules
+Dominionrules 
 =============
+
+![Build Status](https://travis-ci.org/kittikun/dominionrules.svg?branch=develop)
 
 Implementation of the Dominion Rules 3.1
 
@@ -12,12 +14,11 @@ Tested on the following platforms:
 
 ##Build
 
-Files required to build are located under the *build/* folder
-
 You will need:
-- C++14
-- Boost
-- SQLite
+- C++14 enabled compiler
+- [Boost](http://www.boost.org/)
+- [SQLite](http://www.sqlite.org/)
+- [Cereal](http://uscilab.github.io/cereal/)
 
 ###Windows
 
@@ -31,5 +32,9 @@ BOOST_ROOT=C:\boost_1_57_0
 
 ###Linux and BSD
 
+For easier setup it is recommended to use [biicode](https://www.biicode.com/). 
 
-Builds requires CMake to be installed
+1. bii cpp:configure
+1. bii cpp:build
+
+Otherwise builds requires CMake to be installed, files required to build are located under the build/ folder
