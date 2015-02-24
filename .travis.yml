@@ -14,8 +14,8 @@ deploy:
 before_install:
 - echo $CXX
 - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-- sudo apt-get update
-- sudo apt-get upgrade -y
+- sudo apt-get update -q
+- sudo apt-get dist-upgrade -qy
 install:
 - wget http://www.biicode.com/downloads/latest/ubuntu64
 - mv ubuntu64 bii-ubuntu64.deb
