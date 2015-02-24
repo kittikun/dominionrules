@@ -38,6 +38,6 @@ script:
 - cd dyn
 - bii cpp:configure
 - bii cpp:build
-- ./bin/kittikun_dominionrules_src_unittest_main
+- ./bin/kittikun_dominionrules_src_unittest_main --gtest_repeat=1000
 
 
