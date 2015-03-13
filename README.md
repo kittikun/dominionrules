@@ -1,7 +1,7 @@
-Dominionrules ![Build Status](https://travis-ci.org/kittikun/dominionrules.svg?branch=develop) 
+Dominionrules 
 =============
 
-[![Build Status](https://webapi.biicode.com/v1/badges/kittikun/kittikun/dominionrules/master)](https://www.biicode.com/kittikun/dominionrules) 
+![Build Status](https://travis-ci.org/kittikun/dominionrules.svg?branch=develop)
 
 Implementation of the Dominion Rules 3.1
 

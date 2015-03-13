@@ -13,7 +13,7 @@ ADD_BIICODE_TARGETS()
 ACTIVATE_CPP11(INTERFACE ${BII_BLOCK_TARGET})
 
 SET(Boost_USE_STATIC_LIBS OFF)
-bii_find_boost(COMPONENTS system filesystem REQUIRED)
+bii_find_boost(COMPONENTS chrono system filesystem log thread REQUIRED)
 
 target_include_directories(${BII_BLOCK_TARGET} INTERFACE ${Boost_INCLUDE_DIRS})
 target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${Boost_LIBRARIES})
