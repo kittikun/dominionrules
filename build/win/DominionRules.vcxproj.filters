@@ -105,6 +105,12 @@
     <ClInclude Include="..\..\src\dominion\impl\database_source.h">
       <Filter>src\impl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\dominion\capi.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\core\object.h">
+      <Filter>include\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dominion\character\attributes.cpp">
@@ -160,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\dominion\impl\style_impl.cpp">
       <Filter>src\impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\capi.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

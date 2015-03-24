@@ -3,7 +3,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+// to use, copy, modify, merge, publish, distribute, sub-license, and / or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions :
 //
@@ -35,13 +35,21 @@ namespace DominionTest
 	class AttributeTest : public testing::Test
 	{
 	public:
-		AttributeTest() :
-			cTool_(Dominion::GetCharacterCreationTool())
+		AttributeTest()
+			: api_(std::make_unique<Dominion::Api>())
 		{
+		}
+
+	protected:
+		void SetUp() override
+		{
+			api_->InitializeFromMemory();
+			cTool_ = api_->GetCharacterCreationTool();
 		}
 
 	public:
 		std::unique_ptr<Dominion::CharacterUtility> cTool_;
+		std::unique_ptr<Dominion::Api> api_;
 	};
 
 	TEST_F(AttributeTest, GetBaseAttributes)

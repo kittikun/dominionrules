@@ -3,7 +3,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+// to use, copy, modify, merge, publish, distribute, sub-license, and / or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions :
 //
@@ -27,6 +27,7 @@
 #include <cstdint>
 #include <memory>
 
+#include <dominion/core/object.h>
 #include <dominion/core/platform.h>
 
 namespace Dominion
@@ -37,7 +38,7 @@ namespace Dominion
 	template class DOMINION_API std::unique_ptr < DiceImpl > ;
 #endif
 
-	class DOMINION_API Dice
+	class DOMINION_API Dice : public Object
 	{
 		Dice(const Dice&) = delete;
 		Dice& operator=(const Dice&) = delete;

@@ -3,7 +3,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+// to use, copy, modify, merge, publish, distribute, sub-license, and / or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions :
 //
@@ -26,6 +26,7 @@
 
 #include <memory>
 
+#include <dominion/core/object.h>
 #include <dominion/core/definitions.h>
 #include <dominion/core/platform.h>
 
@@ -58,7 +59,7 @@ namespace Dominion
 #endif
 
 	// Utility to create characters
-	class DOMINION_API CharacterUtility
+	class DOMINION_API CharacterUtility : public Object
 	{
 		CharacterUtility(const CharacterUtility&) = delete;
 		CharacterUtility& operator=(const CharacterUtility&) = delete;

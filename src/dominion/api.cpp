@@ -3,7 +3,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+// to use, copy, modify, merge, publish, distribute, sub-license, and / or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions :
 //
@@ -31,28 +31,32 @@
 
 namespace Dominion
 {
-	void InitialiseFromFile(const std::string& dataPath)
+	Api::Api()
+		: impl_(new ApiImpl())
 	{
-		ApiImpl::instance().LoadDatabaseFromFile(dataPath);
 	}
 
-	void InitializeFromMemory()
+	Api::~Api()
 	{
-		ApiImpl::instance().LoadDatabaseFromMemory();
 	}
 
-	std::unique_ptr<CharacterUtility> DOMINION_API GetCharacterCreationTool()
+	void Api::InitialiseFromFile(const std::string& dataPath)
 	{
-		return std::unique_ptr < CharacterUtility > {new CharacterUtility{ ApiImpl::instance().MakeCharacterTool() }};
+		impl_->LoadDatabaseFromFile(dataPath);
 	}
 
-	std::shared_ptr<DataBase> GetDatabase()
+	void Api::InitializeFromMemory()
 	{
-		return ApiImpl::instance().database();
+		impl_->LoadDatabaseFromMemory();
 	}
 
-	std::string DOMINION_API test()
+	std::unique_ptr<CharacterUtility> Api::GetCharacterCreationTool()
 	{
-		return ApiImpl::instance().test();
+		return std::unique_ptr < CharacterUtility > {new CharacterUtility{ impl_->MakeCharacterTool() }};
+	}
+
+	std::shared_ptr<DataBase> Api::GetDatabase()
+	{
+		return impl_->database();
 	}
 } // namespace Dominion

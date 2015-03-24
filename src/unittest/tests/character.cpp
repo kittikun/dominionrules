@@ -3,7 +3,7 @@
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and / or sell
+// to use, copy, modify, merge, publish, distribute, sub-license, and / or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions :
 //
@@ -39,24 +39,31 @@ namespace DominionTest
 	class CharacterTest : public testing::Test
 	{
 	public:
-		CharacterTest() :
-			db_(Dominion::GetDatabase())
-
+		CharacterTest()
+			: api_(std::make_unique<Dominion::Api>())
 		{
 			std::random_device rd;
 
 			rng_ = std::mt19937{ rd() };
+			db_ = api_->GetDatabase();
+		}
+
+	protected:
+		void SetUp() override
+		{
+			api_->InitializeFromMemory();
 		}
 
 	public:
 		std::mt19937 rng_;
 		std::shared_ptr<Dominion::DataBase> db_;
+		std::unique_ptr<Dominion::Api> api_;
 	};
 
 	TEST_F(CharacterTest, Validation)
 	{
 		auto dice = std::make_shared<Dominion::Dice>();
-		auto cTool = Dominion::GetCharacterCreationTool();
+		auto cTool = api_->GetCharacterCreationTool();
 
 		// race should be set to 0 by default
 		EXPECT_EQ(cTool->Validate(), Dominion::ECharacterValidationResult::InvalidRace);
@@ -90,7 +97,7 @@ namespace DominionTest
 	TEST_F(CharacterTest, CreateHumanSoldier)
 	{
 		auto dice = std::make_shared<Dominion::Dice>();
-		auto cTool = Dominion::GetCharacterCreationTool();
+		auto cTool = api_->GetCharacterCreationTool();
 
 		auto styles = db_->GetStyles();
 		auto attributes = cTool->attributesBase();
@@ -121,7 +128,7 @@ namespace DominionTest
 	TEST_F(CharacterTest, CreateElfWitch)
 	{
 		auto dice = std::make_shared<Dominion::Dice>();
-		auto cTool = Dominion::GetCharacterCreationTool();
+		auto cTool = api_->GetCharacterCreationTool();
 
 		auto styles = db_->GetStyles();
 		auto attributes = cTool->attributesBase();
@@ -152,7 +159,7 @@ namespace DominionTest
 	TEST_F(CharacterTest, CreateDwarfPriest)
 	{
 		auto dice = std::make_shared<Dominion::Dice>();
-		auto cTool = Dominion::GetCharacterCreationTool();
+		auto cTool = api_->GetCharacterCreationTool();
 
 		auto styles = db_->GetStyles();
 		auto attributes = cTool->attributesBase();
