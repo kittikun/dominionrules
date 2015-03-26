@@ -10,13 +10,15 @@ INCLUDE(biicode/boost/setup)
 # Actually create targets: EXEcutables and libraries.
 ADD_BIICODE_TARGETS()
 
-ACTIVATE_CPP11(INTERFACE ${BII_BLOCK_TARGET})
+TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++1y")
 
-SET(Boost_USE_STATIC_LIBS OFF)
+#ACTIVATE_CPP14(INTERFACE ${BII_BLOCK_TARGET})
+
+SET(Boost_USE_STATIC_LIBS ON)
 bii_find_boost(COMPONENTS system filesystem REQUIRED)
 
 target_include_directories(${BII_BLOCK_TARGET} INTERFACE ${Boost_INCLUDE_DIRS})
-target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${Boost_LIBRARIES})
+target_link_libraries(${BII_BLOCK_TARGET} INTERFACE ${Boost_LIBRARIES} pthread)
 
 # You can safely delete lines from here...
 
