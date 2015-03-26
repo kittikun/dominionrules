@@ -68,7 +68,7 @@ namespace Dominion
 
 	public:
 		CharacterUtility(std::unique_ptr<CharacterUtilityImpl>);
-		~CharacterUtility();
+		~CharacterUtility() override;
 
 		void attributes(const AttributeArray&);
 

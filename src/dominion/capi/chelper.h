@@ -21,41 +21,44 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DICE_H
-#define DICE_H
+#ifndef C_HELPER_H
+#define C_HELPER_H
 
-#include <cstdint>
 #include <memory>
+#include <random>
+#include <unordered_map>
 
-#include <dominion/core/object.h>
-#include <dominion/core/platform.h>
+#include <dominion/api.h>
 
-namespace Dominion
+#include "../impl/api_impl.h"
+
+class CHelper
 {
-	class DiceImpl;
+public:
+	CHelper();
 
-#ifdef _WIN32
-	template class DOMINION_API std::unique_ptr < DiceImpl > ;
-#endif
+	static CHelper& CHelper::instance();
 
-	class DOMINION_API Dice : public Object
+	std::weak_ptr<Dominion::Api> GetAPI() const;
+
+	template<typename T>
+	std::weak_ptr<T> GetItem(const int handle) const
 	{
-		Dice(const Dice&) = delete;
-		Dice& operator=(const Dice&) = delete;
-		Dice(Dice&&) = delete;
-		Dice& operator=(Dice&&) = delete;
+		auto res = container_.find(handle);
 
-	public:
-		Dice();
-		~Dice() override;
+		if (res != container_.end())
+			return std::static_pointer_cast<T>(res->second);
 
-		// (DR3.1.1 p7, 4-2 WHAT YOU NEED TO PLAY)
-		// To play DR, you need [..] A one twelve-sided die.
-		const uint_fast8_t Roll() const;
+		return std::weak_ptr<T>();
+	}
 
-	private:
-		std::unique_ptr<DiceImpl> impl_;
-	};
-} // namespace Dominion
+	const int RegisterItem(std::shared_ptr<Dominion::Object>);
+	void UnregisterItem(const int);
 
-#endif // DICE_H
+private:
+	std::shared_ptr<Dominion::Api> api_;
+	std::unordered_map<int, std::shared_ptr<Dominion::Object>> container_;
+	std::mt19937 rng_;
+};
+
+#endif // C_HELPER_H

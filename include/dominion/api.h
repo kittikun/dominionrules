@@ -28,6 +28,7 @@
 #include <string>
 
 #include <dominion/core/definitions.h>
+#include <dominion/core/object.h>
 #include <dominion/core/platform.h>
 
 namespace Dominion
@@ -37,10 +38,10 @@ namespace Dominion
 	class ApiImpl;
 
 #ifdef _WIN32
-	template class DOMINION_API std::unique_ptr < ApiImpl >;
+	template class DOMINION_API std::unique_ptr < ApiImpl > ;
 #endif
 
-	class DOMINION_API Api
+	class DOMINION_API Api : public Object
 	{
 		Api(const Api&) = delete;
 		Api& operator=(const Api&) = delete;

@@ -21,41 +21,36 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DICE_H
-#define DICE_H
+#include "cCharacterUtility.h"
 
-#include <cstdint>
-#include <memory>
+#include <dominion/character/character_utility.h>
+#include <dominion/core/dice.h>
 
-#include <dominion/core/object.h>
-#include <dominion/core/platform.h>
+#include "chelper.h"
 
-namespace Dominion
+#include "../impl/dice_impl.h"
+#include "../impl/character_utility_impl.h"
+
+int CreateCharacterCreationTool()
 {
-	class DiceImpl;
+	const int ret = CHelper::instance().RegisterItem(std::move(CHelper::instance().GetAPI().lock()->GetCharacterCreationTool()));
 
-#ifdef _WIN32
-	template class DOMINION_API std::unique_ptr < DiceImpl > ;
-#endif
+	return ret;
+}
 
-	class DOMINION_API Dice : public Object
-	{
-		Dice(const Dice&) = delete;
-		Dice& operator=(const Dice&) = delete;
-		Dice(Dice&&) = delete;
-		Dice& operator=(Dice&&) = delete;
+void DestroyCharacterCreationTool(const int handle)
+{
+	CHelper::instance().UnregisterItem(handle);
+}
 
-	public:
-		Dice();
-		~Dice() override;
+int GetAttributeRoll(int hCTool, int hDice)
+{
+	auto cTool = CHelper::instance().GetItem<Dominion::CharacterUtility>(hCTool);
+	auto dice = CHelper::instance().GetItem<Dominion::Dice>(hDice);
 
-		// (DR3.1.1 p7, 4-2 WHAT YOU NEED TO PLAY)
-		// To play DR, you need [..] A one twelve-sided die.
-		const uint_fast8_t Roll() const;
+	auto ar = cTool.lock()->attributesRoll(dice.lock());
 
-	private:
-		std::unique_ptr<DiceImpl> impl_;
-	};
-} // namespace Dominion
+	int attributesRoll = std::get<0>(*ar) << 16 | std::get<1>(*ar);
 
-#endif // DICE_H
+	return attributesRoll;
+}

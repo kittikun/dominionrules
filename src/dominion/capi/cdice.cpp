@@ -21,41 +21,29 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DICE_H
-#define DICE_H
+#include "cdice.h"
 
-#include <cstdint>
-#include <memory>
+#include <dominion/core/dice.h>
 
-#include <dominion/core/object.h>
-#include <dominion/core/platform.h>
+#include "chelper.h"
 
-namespace Dominion
+#include "../impl/dice_impl.h"
+
+int CreateDice()
 {
-	class DiceImpl;
+	const int ret = CHelper::instance().RegisterItem(std::make_shared<Dominion::Dice>());
 
-#ifdef _WIN32
-	template class DOMINION_API std::unique_ptr < DiceImpl > ;
-#endif
+	return ret;
+}
 
-	class DOMINION_API Dice : public Object
-	{
-		Dice(const Dice&) = delete;
-		Dice& operator=(const Dice&) = delete;
-		Dice(Dice&&) = delete;
-		Dice& operator=(Dice&&) = delete;
+void DestroyDice(const int handle)
+{
+	CHelper::instance().UnregisterItem(handle);
+}
 
-	public:
-		Dice();
-		~Dice() override;
+int DOMINION_API Roll(int handle)
+{
+	auto dice = CHelper::instance().GetItem<Dominion::Dice>(handle);
 
-		// (DR3.1.1 p7, 4-2 WHAT YOU NEED TO PLAY)
-		// To play DR, you need [..] A one twelve-sided die.
-		const uint_fast8_t Roll() const;
-
-	private:
-		std::unique_ptr<DiceImpl> impl_;
-	};
-} // namespace Dominion
-
-#endif // DICE_H
+	return dice.lock()->Roll();
+}

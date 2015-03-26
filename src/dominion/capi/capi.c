@@ -21,74 +21,15 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include <dominion/capi.h>
-
-#include <memory>
-#include <random>
-#include <unordered_map>
+#include "capi.h"
 
 #include <dominion/api.h>
 #include <dominion/core/dice.h>
 #include <dominion/character/character_utility.h>
 
-#include "impl/api_impl.h"
-#include "impl/dice_impl.h"
-#include "impl/character_utility_impl.h"
-
-class CHelper
-{
-public:
-	CHelper::CHelper()
-		: api_(std::make_shared<Dominion::Api>())
-	{
-		std::random_device rd;
-		rng_ = std::mt19937{ rd() };
-	}
-
-	static CHelper& CHelper::instance()
-	{
-		static CHelper instance;
-
-		return instance;
-	}
-
-	std::weak_ptr<Dominion::Api> GetAPI()
-	{
-		return api_;
-	}
-
-	template<typename T>
-	std::weak_ptr<T> GetItem(const int handle)
-	{
-		auto res = container_.find(handle);
-
-		if (res != container_.end())
-			return std::static_pointer_cast<T>(res->second);
-
-		return std::weak_ptr<T>();
-	}
-
-	void InitializeFromMemory()
-	{
-		api_->InitializeFromMemory();
-	}
-
-	const int RegisterItem(std::shared_ptr<Dominion::Object> item)
-	{
-		std::uniform_int_distribution<> dist(0, INT_MAX);
-
-		const int rng = dist(rng_);
-
-		container_.insert(std::make_pair(rng, item));
-
-		return rng;
-	}
-
-private:
-	std::shared_ptr<Dominion::Api> api_;
-	std::unordered_map<int, std::shared_ptr<Dominion::Object>> container_;
-	std::mt19937 rng_;
-};
+#include "../impl/api_impl.h"
+#include "../impl/dice_impl.h"
+#include "../impl/character_utility_impl.h"
 
 void InitializeFromMemory()
 {
@@ -109,12 +50,14 @@ int CreateDice()
 	return ret;
 }
 
-bool getSomeArrayData(int hCTool, int hDice, float* values, int size)
-{
-	auto cTool = CHelper::instance().GetItem<Dominion::CharacterUtility>(hCTool);
-	auto dice = CHelper::instance().GetItem<Dominion::Dice>(hDice);
-
-	auto ar = cTool.lock()->attributesRoll(dice.lock());
-
-	return false;
-}
+//bool getSomeArrayData(int hCTool, int hDice, float* values, int size)
+//{
+//	auto cTool = CHelper::instance().GetItem<Dominion::CharacterUtility>(hCTool);
+//	auto dice = CHelper::instance().GetItem<Dominion::Dice>(hDice);
+//
+//	auto ar = cTool.lock()->attributesRoll(dice.lock());
+//
+//	ar->
+//
+//		return false;
+//}

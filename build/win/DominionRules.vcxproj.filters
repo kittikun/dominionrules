@@ -25,6 +25,9 @@
     <Filter Include="cereal">
       <UniqueIdentifier>{da19db8e-92a3-4247-a75b-4addbc5bce46}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\capi">
+      <UniqueIdentifier>{0deae139-eed1-4810-a3ff-008e4815893d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\dominion\impl\api_impl.h">
@@ -105,11 +108,20 @@
     <ClInclude Include="..\..\src\dominion\impl\database_source.h">
       <Filter>src\impl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\dominion\capi.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\dominion\core\object.h">
       <Filter>include\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\capi\capi.h">
+      <Filter>src\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\capi\cdice.h">
+      <Filter>src\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\capi\chelper.h">
+      <Filter>src\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\dominion\capi\cCharacterUtility.h">
+      <Filter>src\capi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,8 +179,17 @@
     <ClCompile Include="..\..\src\dominion\impl\style_impl.cpp">
       <Filter>src\impl</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dominion\capi.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\dominion\capi\capi.cpp">
+      <Filter>src\capi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\capi\cdice.cpp">
+      <Filter>src\capi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\capi\chelper.cpp">
+      <Filter>src\capi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\capi\cCharacterUtility.cpp">
+      <Filter>src\capi</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
