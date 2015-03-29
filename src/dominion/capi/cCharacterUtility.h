@@ -21,41 +21,17 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DICE_H
-#define DICE_H
+#ifndef C_CHARACTER_UTILITY_H
+#define C_CHARACTER_UTILITY_H
 
-#include <cstdint>
-#include <memory>
-
-#include <dominion/core/object.h>
 #include <dominion/core/platform.h>
 
-namespace Dominion
+extern "C"
 {
-	class DiceImpl;
+	int DOMINION_API CreateCharacterCreationTool();
+	void DOMINION_API DestroyCharacterCreationTool(const int);
 
-#ifdef _WIN32
-	template class DOMINION_API std::unique_ptr < DiceImpl > ;
-#endif
+	int DOMINION_API GetAttributeRoll(int hCTool, int hDice);
+}
 
-	class DOMINION_API Dice : public Object
-	{
-		Dice(const Dice&) = delete;
-		Dice& operator=(const Dice&) = delete;
-		Dice(Dice&&) = delete;
-		Dice& operator=(Dice&&) = delete;
-
-	public:
-		Dice();
-		~Dice() override;
-
-		// (DR3.1.1 p7, 4-2 WHAT YOU NEED TO PLAY)
-		// To play DR, you need [..] A one twelve-sided die.
-		const uint_fast8_t Roll() const;
-
-	private:
-		std::unique_ptr<DiceImpl> impl_;
-	};
-} // namespace Dominion
-
-#endif // DICE_H
+#endif // C_CHARACTER_UTILITY_H

@@ -21,14 +21,11 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef C_API_H
-#define C_API_H
+#include "capi.h"
 
-#include <dominion/core/platform.h>
+#include "chelper.h"
 
-extern "C" {
-	void DOMINION_API InitializeFromMemory();
-	int DOMINION_API GetCharacterCreationTool();
+void InitializeFromMemory()
+{
+	CHelper::instance().GetAPI().lock()->InitializeFromMemory();
 }
-
-#endif // C_API_H

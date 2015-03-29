@@ -40,7 +40,7 @@ namespace DominionTest
 	{
 	public:
 		CharacterTest()
-			: api_(std::make_unique<Dominion::Api>())
+			: api_(new Dominion::Api())
 		{
 			std::random_device rd;
 

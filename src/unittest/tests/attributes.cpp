@@ -36,7 +36,7 @@ namespace DominionTest
 	{
 	public:
 		AttributeTest()
-			: api_(std::make_unique<Dominion::Api>())
+			: api_(new Dominion::Api())
 		{
 		}
 
