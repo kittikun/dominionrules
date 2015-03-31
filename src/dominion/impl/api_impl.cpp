@@ -26,7 +26,7 @@
 #include <numeric>
 #include <sstream>
 #include <boost/filesystem.hpp>
-#include <cereal/archives/json.hpp>
+//#include <cereal/archives/json.hpp>
 
 #include <dominion/core/database.h>
 #include <dominion/character/character_utility.h>
@@ -88,9 +88,9 @@ namespace Dominion
 		auto list = db_->GetList<StyleImpl>("select id from style");
 
 		std::stringstream ss;
-		cereal::JSONOutputArchive oarchive(ss);
+		//cereal::JSONOutputArchive oarchive(ss);
 
-		oarchive(*list[0]);
+		//oarchive(*list[0]);
 
 		return ss.str();
 	}

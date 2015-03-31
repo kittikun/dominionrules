@@ -26,7 +26,7 @@
 
 #include <cstdint>
 #include <memory>
-#include <cereal/cereal.hpp>
+//#include <cereal/cereal.hpp>
 
 namespace Dominion
 {
@@ -48,11 +48,11 @@ namespace Dominion
 
 		const uint_fast32_t guid() const { return guid_; }
 
-		template <class Archive>
-		void serialize(Archive & ar)
-		{
-			ar(CEREAL_NVP(guid_));
-		}
+		//template <class Archive>
+		//void serialize(Archive & ar)
+		//{
+		//	ar(CEREAL_NVP(guid_));
+		//}
 
 	protected:
 		std::weak_ptr < DatabaseImpl > db_;
