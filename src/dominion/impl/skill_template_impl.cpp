@@ -21,7 +21,7 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include "skill_template.h"
+#include "skill_template_impl.h"
 
 #include <memory>
 #include <boost/lexical_cast.hpp>
@@ -31,15 +31,15 @@
 
 namespace Dominion
 {
-	SkillTemplate::SkillTemplate(const uint_fast32_t id) :
+	SkillTemplateImpl::SkillTemplateImpl(const uint_fast32_t id) :
 		DataItem(id),
 		target_(-1)
 	{}
 
-	int SkillTemplate::LoadFromDB(void* data, int argc, char** argv, char** col)
+	int SkillTemplateImpl::LoadFromDB(void* data, int argc, char** argv, char** col)
 	{
 		DatabaseImpl* db = static_cast<DatabaseImpl*>(data);
-		std::shared_ptr<SkillTemplate> skill;
+		std::shared_ptr<SkillTemplateImpl> skill;
 
 		for (int i = 0; i < argc; ++i) {
 			if (argv[i] == nullptr)
@@ -47,7 +47,7 @@ namespace Dominion
 
 			if (strcmp(col[i], "Id") == 0) {
 				uint_fast32_t id = ClassID_Skill_Template + boost::lexical_cast<uint_fast32_t>(argv[i]);
-				skill = std::make_shared<SkillTemplate>(id);
+				skill = std::make_shared<SkillTemplateImpl>(id);
 			} else if (strcmp(col[i], "type") == 0) {
 				skill->type_ = static_cast<ESkillType>(boost::lexical_cast<int32_t>(argv[i]));
 			} else if (strcmp(col[i], "name") == 0) {
@@ -68,7 +68,7 @@ namespace Dominion
 			}
 		}
 
-		db->AddData<SkillTemplate>(skill);
+		db->AddData<SkillTemplateImpl>(skill);
 
 		return 0;
 	}

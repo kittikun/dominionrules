@@ -21,44 +21,26 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#include <dominion/character/skill_template.h>
 
-#include <memory>
-#include <vector>
-
-#include <dominion/core/platform.h>
+#include "../impl/skill_template_impl.h"
 
 namespace Dominion
 {
-	class Perk;
-	class SkillTemplate;
-	class Style;
-	class DatabaseImpl;
+	SkillTemplate::SkillTemplate(const std::shared_ptr<SkillTemplateImpl>& impl) :
+		impl_(impl)
+	{}
 
-#ifdef _WIN32
-	template class DOMINION_API std::shared_ptr < DatabaseImpl > ;
-#endif
+	SkillTemplate::~SkillTemplate()
+	{}
 
-	class DOMINION_API DataBase
+	const std::string& SkillTemplate::name() const
 	{
-		DataBase(const DataBase&) = delete;
-		DataBase& operator=(const DataBase&) = delete;
+		return impl_->name_;
+	}
 
-	public:
-		DataBase(const std::shared_ptr<DatabaseImpl>& impl);
-		~DataBase();
-
-		std::vector<std::shared_ptr<Perk>> GetPerks() const;
-		std::vector<std::shared_ptr<SkillTemplate>> GetSkillTemplates() const;
-		std::vector<std::shared_ptr<Style>> GetStyles() const;
-		std::string GetStylesAsJSON() const;
-
-		const uint32_t GetVersion() const;
-
-	private:
-		std::shared_ptr<DatabaseImpl> impl_;
-	};
-}
-
-#endif // DATABASE_H
+	const ESkillType SkillTemplate::type() const
+	{
+		return impl_->type_;
+	}
+} // namespace Dominion

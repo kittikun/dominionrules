@@ -33,9 +33,7 @@
 
 #include "character_utility_impl.h"
 #include "database_impl.h"
-#include "perk_impl.h"
-#include "skill_template.h"
-#include "style_impl.h"
+#include "skill_template_impl.h"
 
 namespace Dominion
 {
@@ -61,7 +59,7 @@ namespace Dominion
 
 			// create data structure from db_ info
 			db_->ExecuteQuery("select * from perk", PerkImpl::LoadFromDB);
-			db_->ExecuteQuery("select * from skill", SkillTemplate::LoadFromDB);
+			db_->ExecuteQuery("select * from skill", SkillTemplateImpl::LoadFromDB);
 			db_->ExecuteQuery("select * from style", StyleImpl::LoadFromDB);
 		} else {
 			throw std::invalid_argument("Invalid path to database");
@@ -74,7 +72,7 @@ namespace Dominion
 
 		// create data structure from db_ info
 		db_->ExecuteQuery("select * from perk", PerkImpl::LoadFromDB);
-		db_->ExecuteQuery("select * from skill", SkillTemplate::LoadFromDB);
+		db_->ExecuteQuery("select * from skill", SkillTemplateImpl::LoadFromDB);
 		db_->ExecuteQuery("select * from style", StyleImpl::LoadFromDB);
 	}
 

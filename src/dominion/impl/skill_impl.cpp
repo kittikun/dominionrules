@@ -22,11 +22,12 @@
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
 #include "skill_impl.h"
-#include "skill_template.h"
+
+#include "skill_template_impl.h"
 
 namespace Dominion
 {
-	SkillImpl::SkillImpl(const std::shared_ptr<SkillTemplate>& tplt) :
+	SkillImpl::SkillImpl(const std::shared_ptr<SkillTemplateImpl>& tplt) :
 		template_(tplt),
 		level_(0)
 	{

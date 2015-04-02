@@ -29,7 +29,7 @@
 
 namespace Dominion
 {
-	class SkillTemplate;
+	class SkillTemplateImpl;
 
 	class SkillImpl
 	{
@@ -39,14 +39,14 @@ namespace Dominion
 		SkillImpl& operator=(SkillImpl&&) = delete;
 
 	public:
-		SkillImpl(const std::shared_ptr<SkillTemplate>&);
+		SkillImpl(const std::shared_ptr<SkillTemplateImpl>&);
 
 		const std::string& name() const;
 
 		const uint_fast16_t CostToRaise() const;
 
 	public:
-		std::shared_ptr<SkillTemplate> template_;
+		std::shared_ptr<SkillTemplateImpl> template_;
 		uint_fast8_t level_;
 	};
 } // namespace Dominion

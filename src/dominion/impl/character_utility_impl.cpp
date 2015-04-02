@@ -33,7 +33,7 @@
 #include "database_impl.h"
 #include "dice_impl.h"
 #include "skill_impl.h"
-#include "skill_template.h"
+#include "skill_template_impl.h"
 #include "style_impl.h"
 #include "classid_utility.h"
 
@@ -234,7 +234,7 @@ namespace Dominion
 
 	void CharacterUtilityImpl::SetSkills(const std::shared_ptr<CharacterImpl>& character) const
 	{
-		auto templates = db_->GetList<SkillTemplate>(GetSkillQuery(character));
+		auto templates = db_->GetList<SkillTemplateImpl>(GetSkillQuery(character));
 
 		character->skills_.reserve(templates.size());
 

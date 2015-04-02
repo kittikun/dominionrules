@@ -28,6 +28,7 @@
 
 namespace Dominion
 {
+	// Used in the C API
 	class DOMINION_API Object
 	{
 	public:

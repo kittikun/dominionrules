@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\src\unittest\main.cpp" />
     <ClCompile Include="..\..\src\unittest\tests\attributes.cpp" />
     <ClCompile Include="..\..\src\unittest\tests\character.cpp" />
+    <ClCompile Include="..\..\src\unittest\tests\database.cpp" />
     <ClCompile Include="..\..\src\unittest\tests\dice.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -111,6 +112,7 @@
       <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

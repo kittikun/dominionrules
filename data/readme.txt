@@ -1,0 +1,1 @@
+Since libary is created from script, binary is just here to make it easier to edit

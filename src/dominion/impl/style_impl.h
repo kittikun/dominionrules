@@ -25,7 +25,7 @@
 #define STYLE_IMPL_H
 
 #include <bitset>
-//#include <cereal/types/bitset.hpp>
+#include <cereal/types/bitset.hpp>
 
 #include <dominion/core/definitions.h>
 
@@ -42,15 +42,15 @@ namespace Dominion
 	public:
 		using DataItem::guid;
 
-		StyleImpl(const uint_fast32_t id);
+		StyleImpl(const uint_fast32_t);
 
 		static int LoadFromDB(void*, int, char**, char**);
 
-		//template <class Archive>
-		//void serialize(Archive & ar)
-		//{
-		//	ar(cereal::make_nvp("DataItem", cereal::base_class<DataItem>(this)), CEREAL_NVP(archetypes_), CEREAL_NVP(name_));
-		//}
+		template <class Archive>
+		void serialize(Archive & ar)
+		{
+			ar(cereal::make_nvp("DataItem", cereal::base_class<DataItem>(this)), CEREAL_NVP(archetypes_), CEREAL_NVP(name_));
+		}
 
 	public:
 		std::bitset<EArchetype::ArchetypeCount> archetypes_;

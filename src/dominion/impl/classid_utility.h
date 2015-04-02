@@ -82,10 +82,10 @@ namespace Dominion
 	};
 
 	template <>
-	struct ClassIDUtility<SkillTemplate> : public NextID < SkillTemplate >
+	struct ClassIDUtility<SkillTemplateImpl> : public NextID < SkillTemplateImpl >
 	{
 	public:
-		typedef SkillTemplate ImplType;
+		typedef SkillTemplateImpl ImplType;
 		static int ClassIDFromType() { return ClassID_Skill_Template; }
 		static std::string SQLColumnName() { return std::string("skill"); }
 	};

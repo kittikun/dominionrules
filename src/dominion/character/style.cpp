@@ -23,6 +23,8 @@
 
 #include <dominion/character/style.h>
 
+#include <dominion/core/definitions.h>
+
 #include "../impl/style_impl.h"
 
 namespace Dominion
@@ -34,7 +36,22 @@ namespace Dominion
 	Style::~Style()
 	{}
 
-	const std::string& Style::name()
+	const bool Style::isBeast() const
+	{
+		return impl_->archetypes_.test(EArchetype::ArchetypeBeast);
+	}
+
+	const bool Style::isWitch() const
+	{
+		return impl_->archetypes_.test(EArchetype::ArchetypeWitch);
+	}
+
+	const bool Style::isPriest() const
+	{
+		return impl_->archetypes_.test(EArchetype::ArchetypePriest);
+	}
+
+	const std::string& Style::name() const
 	{
 		return impl_->name_;
 	}

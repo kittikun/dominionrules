@@ -21,8 +21,8 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef SKILL_TEMPLATE_H
-#define SKILL_TEMPLATE_H
+#ifndef SKILL_TEMPLATE_IMPL_H
+#define SKILL_TEMPLATE_IMPL_H
 
 #include <bitset>
 
@@ -32,17 +32,23 @@
 
 namespace Dominion
 {
-	class SkillTemplate : public DataItem
+	class SkillTemplateImpl : public DataItem
 	{
-		SkillTemplate(const SkillTemplate&) = delete;
-		SkillTemplate& operator=(const SkillTemplate&) = delete;
-		SkillTemplate(SkillTemplate&&) = delete;
-		SkillTemplate& operator=(SkillTemplate&&) = delete;
+		SkillTemplateImpl(const SkillTemplateImpl&) = delete;
+		SkillTemplateImpl& operator=(const SkillTemplateImpl&) = delete;
+		SkillTemplateImpl(SkillTemplateImpl&&) = delete;
+		SkillTemplateImpl& operator=(SkillTemplateImpl&&) = delete;
 
 	public:
-		SkillTemplate(const uint_fast32_t id);
+		SkillTemplateImpl(const uint_fast32_t id);
 
 		static int LoadFromDB(void*, int, char**, char**);
+
+		template <class Archive>
+		void serialize(Archive & ar)
+		{
+			ar(cereal::make_nvp("DataItem", cereal::base_class<DataItem>(this)), CEREAL_NVP(name_));
+		}
 
 	public:
 		// Main attribute governing the skill
@@ -54,4 +60,4 @@ namespace Dominion
 	};
 } // namespace Dominion
 
-#endif // SKILL_TEMPLATE_H
+#endif // SKILL_TEMPLATE_IMPL_H

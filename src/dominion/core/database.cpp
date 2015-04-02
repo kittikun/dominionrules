@@ -23,9 +23,18 @@
 
 #include <dominion/core/database.h>
 
+#include <sstream>
+#include <cereal/archives/json.hpp>
+#include <cereal/types/vector.hpp>
+#include <cereal/types/memory.hpp>
+
+#include <dominion/character/perk.h>
+#include <dominion/character/skill_template.h>
 #include <dominion/character/style.h>
 
 #include "../impl/database_impl.h"
+#include "../impl/perk_impl.h"
+#include "../impl/skill_template_impl.h"
 #include "../impl/style_impl.h"
 
 namespace Dominion
@@ -36,6 +45,36 @@ namespace Dominion
 
 	DataBase::~DataBase()
 	{}
+
+	std::vector<std::shared_ptr<Perk>> DataBase::GetPerks() const
+	{
+		auto results = impl_->GetList<PerkImpl>("select id from perk");
+
+		std::vector<std::shared_ptr<Perk>> res;
+
+		res.reserve(results.size());
+
+		for (auto item : results) {
+			res.push_back(std::make_shared<Perk>(item));
+		}
+
+		return res;
+	}
+
+	std::vector<std::shared_ptr<SkillTemplate>> DataBase::GetSkillTemplates() const
+	{
+		auto results = impl_->GetList<SkillTemplateImpl >("select id from style");
+
+		std::vector<std::shared_ptr<SkillTemplate>> res;
+
+		res.reserve(results.size());
+
+		for (auto item : results) {
+			res.push_back(std::make_shared<SkillTemplate>(item));
+		}
+
+		return res;
+	}
 
 	std::vector<std::shared_ptr<Style>> DataBase::GetStyles() const
 	{
@@ -50,5 +89,23 @@ namespace Dominion
 		}
 
 		return res;
+	}
+
+	std::string DataBase::GetStylesAsJSON() const
+	{
+		std::stringstream ss;
+		cereal::JSONOutputArchive archive(ss);
+		auto results = impl_->GetList<StyleImpl>("select id from style");
+
+		archive(results);
+
+		return ss.str();
+	}
+
+	const uint32_t DataBase::GetVersion() const
+	{
+		auto results = impl_->GetIntValue("select value from config where type is \"version\"");
+
+		return 0;
 	}
 } // namespace Dominion

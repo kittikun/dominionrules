@@ -21,44 +21,39 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef SKILL_TEMPLATE_H
+#define SKILL_TEMPLATE_H
 
 #include <memory>
-#include <vector>
+#include <string>
 
+#include <dominion/core/definitions.h>
 #include <dominion/core/platform.h>
 
 namespace Dominion
 {
-	class Perk;
-	class SkillTemplate;
-	class Style;
-	class DatabaseImpl;
+	class SkillTemplateImpl;
 
 #ifdef _WIN32
-	template class DOMINION_API std::shared_ptr < DatabaseImpl > ;
+	template class DOMINION_API std::shared_ptr < SkillTemplateImpl > ;
 #endif
 
-	class DOMINION_API DataBase
+	// (DR3.1.1 p13, 4-4 SkillS)
+	class DOMINION_API SkillTemplate
 	{
-		DataBase(const DataBase&) = delete;
-		DataBase& operator=(const DataBase&) = delete;
+		SkillTemplate(const SkillTemplate&) = delete;
+		SkillTemplate& operator=(const SkillTemplate&) = delete;
 
 	public:
-		DataBase(const std::shared_ptr<DatabaseImpl>& impl);
-		~DataBase();
+		SkillTemplate(const std::shared_ptr<SkillTemplateImpl>&);
+		~SkillTemplate();
 
-		std::vector<std::shared_ptr<Perk>> GetPerks() const;
-		std::vector<std::shared_ptr<SkillTemplate>> GetSkillTemplates() const;
-		std::vector<std::shared_ptr<Style>> GetStyles() const;
-		std::string GetStylesAsJSON() const;
-
-		const uint32_t GetVersion() const;
+		const std::string& name() const;
+		const ESkillType type() const;
 
 	private:
-		std::shared_ptr<DatabaseImpl> impl_;
+		std::shared_ptr<SkillTemplateImpl> impl_;
 	};
-}
+} // namespace Dominion
 
-#endif // DATABASE_H
+#endif // SKILL_TEMPLATE_H

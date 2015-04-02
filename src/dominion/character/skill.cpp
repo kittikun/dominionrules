@@ -24,7 +24,7 @@
 #include <dominion/character/skill.h>
 
 #include "../impl/skill_impl.h"
-#include "../impl/skill_template.h"
+#include "../impl/skill_template_impl.h"
 
 namespace Dominion
 {
