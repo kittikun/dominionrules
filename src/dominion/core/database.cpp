@@ -104,8 +104,6 @@ namespace Dominion
 
 	const uint32_t DataBase::GetVersion() const
 	{
-		auto results = impl_->GetIntValue("select value from config where type is \"version\"");
-
-		return 0;
+		return impl_->GetIntValue("select value from config where type is \"version\"");
 	}
 } // namespace Dominion
