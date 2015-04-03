@@ -1,7 +1,6 @@
 language: cpp
 compiler:
 - gcc
-- clang
 deploy:
   provider: biicode
   user: kittikun
