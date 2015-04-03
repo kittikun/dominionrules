@@ -24,9 +24,6 @@
 #include <dominion/core/database.h>
 
 #include <sstream>
-#include <cereal/archives/json.hpp>
-#include <cereal/types/vector.hpp>
-#include <cereal/types/memory.hpp>
 
 #include <dominion/character/perk.h>
 #include <dominion/character/skill_template.h>
@@ -89,17 +86,6 @@ namespace Dominion
 		}
 
 		return res;
-	}
-
-	std::string DataBase::GetStylesAsJSON() const
-	{
-		std::stringstream ss;
-		cereal::JSONOutputArchive archive(ss);
-		auto results = impl_->GetList<StyleImpl>("select id from style");
-
-		archive(results);
-
-		return ss.str();
 	}
 
 	const uint32_t DataBase::GetVersion() const

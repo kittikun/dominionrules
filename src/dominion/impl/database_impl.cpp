@@ -41,17 +41,6 @@ namespace Dominion
 		}
 	}
 
-	void DatabaseImpl::OpenDatabaseFromFile(boost::filesystem::path path)
-	{
-		int rc;
-		rc = sqlite3_open(path.string().c_str(), &db_);
-
-		if (rc) {
-			boost::format err = boost::format("Couldn't open database: %1%") % sqlite3_errmsg(db_);
-			throw std::runtime_error(boost::str(err));
-		}
-	}
-
 	void DatabaseImpl::OpenDatabaseFromMemory()
 	{
 		int rc;

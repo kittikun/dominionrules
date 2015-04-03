@@ -13,7 +13,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${ROOT_PATH}/bin)
 
-find_package(Boost COMPONENTS system filesystem REQUIRED)
+find_package(Boost REQUIRED)
 find_package(SQLite3 REQUIRED)
 find_package(GTest REQUIRED)
 

@@ -91,10 +91,17 @@ namespace DominionTest
 		EXPECT_TRUE(hasWitch);
 	}
 
-	TEST_F(DatabaseTest, GetStylesJSON)
+	TEST_F(DatabaseTest, GetStylesSerializiation)
 	{
-		auto json = database_->GetStylesAsJSON();
+		auto styles = database_->GetStyles();
 
-		EXPECT_GT(json.size(), 0);
+		for (auto style : styles) {
+			auto buffer = style->Serialize();
+
+			if (buffer == nullptr)
+				FAIL();
+
+			SUCCEED();
+		}
 	}
 } // namespace DominionTest

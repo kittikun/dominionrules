@@ -1,0 +1,9 @@
+namespace Dominion.Generated;
+
+
+table Style {
+  name:string;
+  isBeast:bool = false;
+  isPriest:bool = false;
+  isWitch:bool = false;
+}

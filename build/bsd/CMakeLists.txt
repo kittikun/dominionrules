@@ -14,7 +14,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${ROOT_PATH}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${ROOT_PATH}/bin)
 
-find_package(Boost COMPONENTS chrono system filesystem log thread unit_test_framework REQUIRED)
+find_package(Boost REQUIRED)
 find_package(SQLite3 REQUIRED)
 
 if (Boost_FOUND AND SQLITE3_FOUND)

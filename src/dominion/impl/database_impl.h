@@ -31,7 +31,6 @@
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/functional/hash.hpp>
-#include <boost/filesystem.hpp>
 #include <sqlite3.h>
 
 #include "dataitem.h"
@@ -52,7 +51,6 @@ namespace Dominion
 		DatabaseImpl();
 		~DatabaseImpl();
 
-		void OpenDatabaseFromFile(boost::filesystem::path);
 		void OpenDatabaseFromMemory();
 
 		template <typename T>

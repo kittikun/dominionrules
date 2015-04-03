@@ -52,7 +52,6 @@ namespace Dominion
 		std::vector<std::shared_ptr<Perk>> GetPerks() const;
 		std::vector<std::shared_ptr<SkillTemplate>> GetSkillTemplates() const;
 		std::vector<std::shared_ptr<Style>> GetStyles() const;
-		std::string GetStylesAsJSON() const;
 
 		const uint32_t GetVersion() const;
 

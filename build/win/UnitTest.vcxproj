@@ -93,7 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FLATBUFFERS_ROOT)\include;$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
     </ClCompile>
@@ -109,7 +109,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FLATBUFFERS_ROOT)\include;$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild />
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
@@ -128,7 +128,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FLATBUFFERS_ROOT)\include;$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -147,7 +147,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(FLATBUFFERS_ROOT)\include;$(BOOST_ROOT);$(GTEST_ROOT);$(SolutionDir)\..\..\include</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>

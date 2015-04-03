@@ -23,7 +23,10 @@
 
 #include <dominion/character/style.h>
 
+#include <flatbuffers/flatbuffers.h>
+
 #include <dominion/core/definitions.h>
+#include <generated/style_generated.h>
 
 #include "../impl/style_impl.h"
 
@@ -35,6 +38,18 @@ namespace Dominion
 
 	Style::~Style()
 	{}
+
+	uint8_t* Style::Serialize() const
+	{
+		flatbuffers::FlatBufferBuilder fbb;
+
+		auto str = fbb.CreateString(name());
+
+		auto style = Dominion::Generated::CreateStyle(fbb, str, isBeast(), isPriest(), isWitch());
+		fbb.Finish(style);
+
+		return fbb.GetBufferPointer();
+	}
 
 	const bool Style::isBeast() const
 	{

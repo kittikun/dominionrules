@@ -44,12 +44,6 @@ namespace Dominion
 
 		static int LoadFromDB(void*, int, char**, char**);
 
-		template <class Archive>
-		void serialize(Archive & ar)
-		{
-			ar(cereal::make_nvp("DataItem", cereal::base_class<DataItem>(this)), CEREAL_NVP(name_));
-		}
-
 	public:
 		// Main attribute governing the skill
 		ESkillDependency dependency_;

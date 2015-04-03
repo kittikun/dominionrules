@@ -23,9 +23,19 @@
 
 #include <gtest/gtest.h>
 
+#if defined(_WIN32)
+#define _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+#endif
+
 int main(int argc, char **argv)
 {
 	testing::InitGoogleTest(&argc, argv);
 
 	return RUN_ALL_TESTS();
+
+#if defined(_WIN32)
+	_CrtDumpMemoryLeaks();
+#endif
 }

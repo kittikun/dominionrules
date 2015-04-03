@@ -25,8 +25,6 @@
 
 #include <numeric>
 #include <sstream>
-#include <boost/filesystem.hpp>
-//#include <cereal/archives/json.hpp>
 
 #include <dominion/core/database.h>
 #include <dominion/character/character_utility.h>
@@ -46,26 +44,6 @@ namespace Dominion
 		return std::make_shared<DataBase>(db_);
 	}
 
-	void ApiImpl::LoadDatabaseFromFile(const std::string& dataPath)
-	{
-		boost::filesystem::path path(dataPath);
-		boost::filesystem::path file("dominion.db");
-		boost::filesystem::path canonical = boost::filesystem::canonical(dataPath / file);
-
-		canonical = canonical.make_preferred();
-
-		if (boost::filesystem::exists(canonical)) {
-			db_->OpenDatabaseFromFile(canonical);
-
-			// create data structure from db_ info
-			db_->ExecuteQuery("select * from perk", PerkImpl::LoadFromDB);
-			db_->ExecuteQuery("select * from skill", SkillTemplateImpl::LoadFromDB);
-			db_->ExecuteQuery("select * from style", StyleImpl::LoadFromDB);
-		} else {
-			throw std::invalid_argument("Invalid path to database");
-		}
-	}
-
 	void ApiImpl::LoadDatabaseFromMemory()
 	{
 		db_->OpenDatabaseFromMemory();
@@ -79,17 +57,5 @@ namespace Dominion
 	std::unique_ptr<CharacterUtilityImpl> ApiImpl::MakeCharacterTool() const
 	{
 		return std::unique_ptr<CharacterUtilityImpl>(new CharacterUtilityImpl{ db_ });
-	}
-
-	std::string ApiImpl::test()
-	{
-		auto list = db_->GetList<StyleImpl>("select id from style");
-
-		std::stringstream ss;
-		//cereal::JSONOutputArchive oarchive(ss);
-
-		//oarchive(*list[0]);
-
-		return ss.str();
 	}
 } // namespace Dominion
