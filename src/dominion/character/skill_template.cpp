@@ -39,7 +39,7 @@ namespace Dominion
 		return impl_->name_;
 	}
 
-	const ESkillType SkillTemplate::type() const
+	ESkillType SkillTemplate::type() const
 	{
 		return impl_->type_;
 	}

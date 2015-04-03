@@ -49,7 +49,7 @@ namespace Dominion
 		~Skill();
 
 		const std::string& name() const;
-		const uint_fast8_t level() const;
+		uint_fast8_t level() const;
 
 	private:
 		std::shared_ptr<SkillImpl> impl_;

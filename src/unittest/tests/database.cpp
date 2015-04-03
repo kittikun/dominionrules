@@ -63,10 +63,10 @@ namespace DominionTest
 	{
 		auto templates = database_->GetSkillTemplates();
 
-		EXPECT_GT(templates.size(), 0);
+		EXPECT_GT(templates.size(), static_cast<uint32_t>(0));
 
 		for (auto skt : templates) {
-			EXPECT_GT(skt->name().size(), 0);
+			EXPECT_GT(skt->name().size(), static_cast<uint32_t>(0));
 			EXPECT_NO_THROW(skt->type());
 		}
 	}
@@ -75,13 +75,13 @@ namespace DominionTest
 	{
 		auto styles = database_->GetStyles();
 
-		EXPECT_GT(styles.size(), 0);
+		EXPECT_GT(styles.size(), static_cast<uint32_t>(0));
 
 		bool hasPriest = false;
 		bool hasWitch = false;
 
 		for (auto style : styles) {
-			EXPECT_GT(style->name().size(), 0);
+			EXPECT_GT(style->name().size(), static_cast<uint32_t>(0));
 
 			hasPriest |= style->isPriest();
 			hasWitch |= style->isWitch();

@@ -51,7 +51,7 @@ namespace Dominion
 
 		// (DR3.1.1 p7, 4-2 WHAT YOU NEED TO PLAY)
 		// To play DR, you need [..] A one twelve-sided die.
-		const uint_fast8_t Roll() const;
+		uint_fast8_t Roll() const;
 
 	private:
 		std::unique_ptr<DiceImpl> impl_;

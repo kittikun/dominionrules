@@ -40,7 +40,7 @@ namespace Dominion
 		return impl_->template_->name_;
 	}
 
-	const uint_fast8_t Skill::level() const
+	uint_fast8_t Skill::level() const
 	{
 		return impl_->level_;
 	}

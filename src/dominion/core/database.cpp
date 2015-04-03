@@ -88,7 +88,7 @@ namespace Dominion
 		return res;
 	}
 
-	const uint32_t DataBase::GetVersion() const
+	uint32_t DataBase::GetVersion() const
 	{
 		return impl_->GetIntValue("select value from config where type is \"version\"");
 	}

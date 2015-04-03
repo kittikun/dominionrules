@@ -54,13 +54,13 @@ namespace Dominion
 		Character(const std::shared_ptr<CharacterImpl>&);
 		~Character();
 
-		const uint_fast16_t ap() const;
+		uint_fast16_t ap() const;
 
 		std::shared_ptr<Attributes> attributes() const;
 
 		// (DR3.1.1 p26, 4-2 STEP ONE: THINK ABOUT YOUR CHARACTER)
 		// What sort of creature do you want to play?
-		const ERace race() const;
+		ERace race() const;
 
 		// (DR3.1.1 p26, 4-2 CHARACTER STYLES)
 		// Once you have thought about these questions, you may want to consider

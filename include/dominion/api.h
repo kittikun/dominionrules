@@ -54,7 +54,6 @@ namespace Dominion
 
 		std::unique_ptr<CharacterUtility> GetCharacterCreationTool();
 		std::shared_ptr<DataBase> GetDatabase();
-		void InitialiseFromFile(const std::string&);
 		void InitializeFromMemory();
 
 	private:

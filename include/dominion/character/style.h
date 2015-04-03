@@ -57,9 +57,9 @@ namespace Dominion
 
 		const std::string& name() const;
 
-		const bool isBeast() const;
-		const bool isPriest() const;
-		const bool isWitch() const;
+		bool isBeast() const;
+		bool isPriest() const;
+		bool isWitch() const;
 
 	private:
 		std::shared_ptr<StyleImpl> impl_;

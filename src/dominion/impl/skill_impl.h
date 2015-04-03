@@ -43,7 +43,7 @@ namespace Dominion
 
 		const std::string& name() const;
 
-		const uint_fast16_t CostToRaise() const;
+		uint_fast16_t CostToRaise() const;
 
 	public:
 		std::shared_ptr<SkillTemplateImpl> template_;

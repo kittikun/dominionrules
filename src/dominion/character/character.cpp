@@ -46,7 +46,7 @@ namespace Dominion
 	Character::~Character()
 	{}
 
-	const uint_fast16_t Character::ap() const
+	uint_fast16_t Character::ap() const
 	{
 		return impl_->ap_;
 	}
@@ -68,7 +68,7 @@ namespace Dominion
 		return res;
 	}
 
-	const ERace Character::race() const
+	ERace Character::race() const
 	{
 		return impl_->race_;
 	}

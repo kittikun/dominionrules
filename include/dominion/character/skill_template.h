@@ -49,7 +49,7 @@ namespace Dominion
 		~SkillTemplate();
 
 		const std::string& name() const;
-		const ESkillType type() const;
+		ESkillType type() const;
 
 	private:
 		std::shared_ptr<SkillTemplateImpl> impl_;

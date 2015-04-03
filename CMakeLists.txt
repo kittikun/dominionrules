@@ -1,7 +1,3 @@
-
-# Initializes block variables
-INIT_BIICODE_BLOCK()
-
 # Including tools.cmake from biicode/cmake user block
 # see https://www.biicode.com/biicode/cmake
 INCLUDE(biicode/cmake/tools)

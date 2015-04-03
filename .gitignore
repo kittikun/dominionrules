@@ -3,6 +3,7 @@ build/linux/
 build/bsd/
 bin/
 lib/
+include/generated/
 *.csv
 *.sdf
 *.opensdf

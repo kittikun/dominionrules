@@ -40,7 +40,7 @@ namespace Dominion
         DiceImpl();
         ~DiceImpl();
 
-        const uint_fast8_t Roll();
+        uint_fast8_t Roll();
 
     private:
         std::mt19937 rng_;

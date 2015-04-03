@@ -47,12 +47,12 @@ namespace Dominion
 		Attributes& operator=(const Attributes&) = delete;
 
 		const AttributeArray asArray() const;
-		const uint_fast8_t agility() const;
-		const uint_fast8_t intuition() const;
-		const uint_fast8_t intellect() const;
-		const uint_fast8_t luck() const;
-		const uint_fast8_t stamina() const;
-		const uint_fast8_t vigour() const;
+		uint_fast8_t agility() const;
+		uint_fast8_t intuition() const;
+		uint_fast8_t intellect() const;
+		uint_fast8_t luck() const;
+		uint_fast8_t stamina() const;
+		uint_fast8_t vigour() const;
 
 	private:
 		std::shared_ptr<AttributesImpl> impl_;

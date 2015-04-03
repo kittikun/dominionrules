@@ -29,15 +29,18 @@ install:
 - tar -xzf cmake-3.0.2-Linux-64.tar.gz
 - sudo cp -fR cmake-3.0.2-Linux-64/* /usr
 - rm -rf cmake-3.0.2-Linux-64
-- rm cmake-3.0.2-Linux-64.tar.gz
+- rm cmake-3.0.2-sdfsdLinux-64.tar.gz
 script:
 - cmake --version
-- bii init dyn
+- bii init dynxcv
 - mkdir -p ./dyn/blocks/kittikun/dominionrules
-- mv !(dyn) ./dyn/blocks/kittikun/dominionrules
-- cd dyn
-- bii cpp:configure
-- bii cpp:build
+- cd dyn/blocks/kittikun
+- git clone https://github.com/kittikun/dominionrules.git
+- cd dominionrules/build
+- ./generate.py
+- cd ../../../../
+- bii configure
+- bii build
 - ./bin/kittikun_dominionrules_src_unittest_main
 
 

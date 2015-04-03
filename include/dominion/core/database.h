@@ -53,7 +53,7 @@ namespace Dominion
 		std::vector<std::shared_ptr<SkillTemplate>> GetSkillTemplates() const;
 		std::vector<std::shared_ptr<Style>> GetStyles() const;
 
-		const uint32_t GetVersion() const;
+		uint32_t GetVersion() const;
 
 	private:
 		std::shared_ptr<DatabaseImpl> impl_;

@@ -51,17 +51,17 @@ namespace Dominion
 		return fbb.GetBufferPointer();
 	}
 
-	const bool Style::isBeast() const
+	bool Style::isBeast() const
 	{
 		return impl_->archetypes_.test(EArchetype::ArchetypeBeast);
 	}
 
-	const bool Style::isWitch() const
+	bool Style::isWitch() const
 	{
 		return impl_->archetypes_.test(EArchetype::ArchetypeWitch);
 	}
 
-	const bool Style::isPriest() const
+	bool Style::isPriest() const
 	{
 		return impl_->archetypes_.test(EArchetype::ArchetypePriest);
 	}

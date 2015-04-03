@@ -38,7 +38,7 @@ namespace Dominion
 		ap_{ 45 }
 	{}
 
-	const bool CharacterImpl::hasFavourableRounding() const
+	bool CharacterImpl::hasFavourableRounding() const
 	{
 		// intentionally left Favorable Rounding perk as first item so we can quickly check
 		if (perks_[0]->roll_ == 1)

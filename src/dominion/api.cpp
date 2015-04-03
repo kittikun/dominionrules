@@ -40,11 +40,6 @@ namespace Dominion
 	{
 	}
 
-	void Api::InitialiseFromFile(const std::string& dataPath)
-	{
-		impl_->LoadDatabaseFromFile(dataPath);
-	}
-
 	void Api::InitializeFromMemory()
 	{
 		impl_->LoadDatabaseFromMemory();

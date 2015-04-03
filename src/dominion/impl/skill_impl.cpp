@@ -38,7 +38,7 @@ namespace Dominion
 		return template_->name_;
 	}
 
-	const uint_fast16_t SkillImpl::CostToRaise() const
+	uint_fast16_t SkillImpl::CostToRaise() const
 	{
 		// Triangular numbers: a(n) = C(n+1,2) = n(n+1)/2 = 0+1+2+...+n.
 		// https://oeis.org/A000217

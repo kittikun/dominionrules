@@ -45,7 +45,7 @@ namespace Dominion
 			guid_(guid)
 		{}
 
-		const uint_fast32_t guid() const { return guid_; }
+		uint_fast32_t guid() const { return guid_; }
 
 	protected:
 		std::weak_ptr < DatabaseImpl > db_;

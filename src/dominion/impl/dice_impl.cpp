@@ -39,7 +39,7 @@ namespace Dominion
     DiceImpl::~DiceImpl()
     {}
 
-    const uint_fast8_t DiceImpl::Roll()
+    uint_fast8_t DiceImpl::Roll()
     {
         return static_cast<uint_fast8_t>(std::uniform_int_distribution < > { 1, 12 }(rng_));
     }

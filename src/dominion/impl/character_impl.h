@@ -49,7 +49,7 @@ namespace Dominion
 	public:
 		CharacterImpl(const uint_fast32_t id);
 
-		const bool hasFavourableRounding() const;
+		bool hasFavourableRounding() const;
 
 	private:
 		std::string RaceToPerkQuery();

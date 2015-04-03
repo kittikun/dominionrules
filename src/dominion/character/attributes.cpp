@@ -39,32 +39,32 @@ namespace Dominion
 		return impl_->array_;
 	}
 
-	const uint_fast8_t Attributes::agility() const
+	uint_fast8_t Attributes::agility() const
 	{
 		return impl_->array_[EAttribute::AttributeAgility];
 	}
 
-	const uint_fast8_t Attributes::intuition() const
+	uint_fast8_t Attributes::intuition() const
 	{
 		return impl_->array_[EAttribute::AttributeIntuition];
 	}
 
-	const uint_fast8_t Attributes::intellect() const
+	uint_fast8_t Attributes::intellect() const
 	{
 		return impl_->array_[EAttribute::AttributeIntellect];
 	}
 
-	const uint_fast8_t Attributes::luck() const
+	uint_fast8_t Attributes::luck() const
 	{
 		return impl_->array_[EAttribute::AttributeLuck];
 	}
 
-	const uint_fast8_t Attributes::stamina() const
+	uint_fast8_t Attributes::stamina() const
 	{
 		return impl_->array_[EAttribute::AttributeStamina];
 	}
 
-	const uint_fast8_t Attributes::vigour() const
+	uint_fast8_t Attributes::vigour() const
 	{
 		return impl_->array_[EAttribute::AttributeVigour];
 	}
