@@ -28,15 +28,22 @@ install:
 - wget https://s3.amazonaws.com/biibinaries/thirdparty/cmake-3.0.2-Linux-64.tar.gz
 - tar -xzf cmake-3.0.2-Linux-64.tar.gz
 - sudo cp -fR cmake-3.0.2-Linux-64/* /usr
+- git clone https://github.com/google/flatbuffers.git
+- cd flatbuffers
+- cmake .
+- make
+- sudo make install
+- cd ..
 script:
 - cmake --version
-- bii init dynxcv
+- bii init dyn
 - mkdir -p ./dyn/blocks/kittikun/dominionrules
 - cd dyn/blocks/kittikun
 - git clone https://github.com/kittikun/dominionrules.git
 - cd dominionrules/build
 - ./generate.py
 - cd ../../../../
+- pwd
 - bii configure
 - bii build
 - ./bin/kittikun_dominionrules_src_unittest_main
