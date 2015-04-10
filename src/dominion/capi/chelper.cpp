@@ -42,6 +42,27 @@ std::weak_ptr<Dominion::Api> CHelper::GetAPI() const
 	return api_;
 }
 
+boost::optional<std::string> CHelper::GetFBBuffer(const int handle) const
+{
+	auto res = FBBuffers_.find(handle);
+
+	if (res != FBBuffers_.end())
+		return res->second;
+
+	return boost::none;
+}
+
+const int CHelper::RegisterFBBuffer(const std::string& buffer)
+{
+	std::uniform_int_distribution<> dist(0, INT_MAX);
+
+	const int rng = dist(rng_);
+
+	FBBuffers_.insert(std::make_pair(rng, buffer));
+
+	return rng;
+}
+
 const int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
 {
 	std::uniform_int_distribution<> dist(0, INT_MAX);
@@ -51,6 +72,12 @@ const int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
 	container_.insert(std::make_pair(rng, item));
 
 	return rng;
+}
+
+void CHelper::UnregisterFBBuffer(const int handle)
+{
+	if (FBBuffers_.erase(handle) != 1)
+		throw new std::exception("Item not removed");
 }
 
 void CHelper::UnregisterItem(const int handle)

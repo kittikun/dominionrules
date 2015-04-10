@@ -30,7 +30,7 @@ extern "C"
 {
 	int DOMINION_API CreateDice();
 	void DOMINION_API DestroyDice(const int);
-	int DOMINION_API Roll(int handle);
+	int DOMINION_API Roll(const int handle);
 }
 
 #endif // C_DICE_H

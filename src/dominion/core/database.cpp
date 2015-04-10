@@ -29,6 +29,9 @@
 #include <dominion/character/skill_template.h>
 #include <dominion/character/style.h>
 
+#include <generated/style_generated.h>
+#include <generated/style_array_generated.h>
+
 #include "../impl/database_impl.h"
 #include "../impl/perk_impl.h"
 #include "../impl/skill_template_impl.h"
@@ -86,6 +89,30 @@ namespace Dominion
 		}
 
 		return res;
+	}
+
+	flatbuffers::unique_ptr_t DataBase::SerializeStyles(std::string& buffer) const
+	{
+		flatbuffers::FlatBufferBuilder fbb;
+		auto styles = impl_->GetList<StyleImpl>("select id from style");
+
+		std::vector<flatbuffers::Offset<FBStyle>> temp;
+
+		styles.reserve(styles.size());
+
+		for (auto style : styles)
+			temp.push_back(style->Serialize(fbb));
+
+		auto vst = fbb.CreateVectorOfSortedTables(&temp[0], temp.size());
+
+		auto mloc = CreateFBStyleArray(fbb, vst);
+
+		FinishFBStyleArrayBuffer(fbb, mloc);
+
+		auto bufferpointer = reinterpret_cast<const char *>(fbb.GetBufferPointer());
+		buffer.assign(bufferpointer, bufferpointer + fbb.GetSize());
+
+		return fbb.ReleaseBufferPointer();
 	}
 
 	uint32_t DataBase::GetVersion() const

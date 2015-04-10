@@ -19,6 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bsd", "bsd", "{2BDBA6D8-E73
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{418F7777-2BE4-46E0-98F0-73800F2C63CF}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\.travis.yml = ..\..\.travis.yml
+		..\..\biicode.conf = ..\..\biicode.conf
+		..\..\CMakeLists.txt = ..\..\CMakeLists.txt
 		..\..\LICENSE = ..\..\LICENSE
 		..\..\README.md = ..\..\README.md
 	EndProjectSection

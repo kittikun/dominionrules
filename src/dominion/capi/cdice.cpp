@@ -41,7 +41,7 @@ void DestroyDice(const int handle)
 	CHelper::instance().UnregisterItem(handle);
 }
 
-int DOMINION_API Roll(int handle)
+int Roll(const int handle)
 {
 	auto dice = CHelper::instance().GetItem<Dominion::Dice>(handle);
 

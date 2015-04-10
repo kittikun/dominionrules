@@ -26,6 +26,8 @@
 #include <memory>
 #include <boost/lexical_cast.hpp>
 
+#include <generated/style_generated.h>
+
 #include "classid.h"
 #include "database_impl.h"
 
@@ -61,5 +63,20 @@ namespace Dominion
 		db->AddData<StyleImpl>(style);
 
 		return 0;
+	}
+
+	flatbuffers::Offset<FBStyle> StyleImpl::Serialize(flatbuffers::FlatBufferBuilder& fbb) const
+	{
+		FBStyleBuilder builder(fbb);
+
+		auto str = fbb.CreateString(name_);
+
+		builder.add_id(guid());
+		builder.add_name(str);
+		builder.add_isBeast(archetypes_.test(EArchetype::ArchetypeBeast));
+		builder.add_isPriest(archetypes_.test(EArchetype::ArchetypePriest));
+		builder.add_isWitch(archetypes_.test(EArchetype::ArchetypeWitch));
+
+		return builder.Finish();
 	}
 } // namespace Dominion

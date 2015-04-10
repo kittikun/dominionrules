@@ -21,51 +21,43 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef C_HELPER_H
-#define C_HELPER_H
+#include "cDatabase.h"
 
-#include <memory>
-#include <random>
-#include <unordered_map>
-#include <boost/optional.hpp>
+#include <dominion/core/database.h>
 
-#include <dominion/api.h>
+#include "chelper.h"
 
-#include "../impl/api_impl.h"
-
-class CHelper
+int SerializeStyles()
 {
-public:
-	CHelper();
+	std::string buffer;
+	CHelper::instance().GetAPI().lock()->GetDatabase()->SerializeStyles(buffer);
 
-	static CHelper& CHelper::instance();
+	return CHelper::instance().RegisterFBBuffer(buffer);
+}
 
-	std::weak_ptr<Dominion::Api> GetAPI() const;
+int GetStylesSize(const int handle)
+{
+	auto res = CHelper::instance().GetFBBuffer(handle);
 
-	template<typename T>
-	std::weak_ptr<T> GetItem(const int handle) const
-	{
-		auto res = container_.find(handle);
+	if (!res)
+		return -1;
 
-		if (res != container_.end())
-			return std::static_pointer_cast<T>(res->second);
+	return static_cast<int>(res->size());
+}
 
-		return std::weak_ptr<T>();
-	}
+bool GetStylesBuffer(const int handle, char* dst)
+{
+	auto src = CHelper::instance().GetFBBuffer(handle);
 
-	boost::optional<std::string> GetFBBuffer(const int handle) const;
+	if (!src)
+		return false;
 
-	const int RegisterItem(std::shared_ptr<Dominion::Object>);
-	void UnregisterItem(const int);
+	std::copy(src->begin(), src->end(), dst);
 
-	const int RegisterFBBuffer(const std::string& buffer);
-	void UnregisterFBBuffer(const int);
+	return true;
+}
 
-private:
-	std::shared_ptr<Dominion::Api> api_;
-	std::unordered_map<int, std::shared_ptr<Dominion::Object>> container_;
-	std::unordered_map<int, std::string> FBBuffers_;
-	std::mt19937 rng_;
-};
-
-#endif // C_HELPER_H
+void ReleaseStylesBuffer(const int handle)
+{
+	CHelper::instance().UnregisterFBBuffer(handle);
+}

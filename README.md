@@ -20,26 +20,26 @@ You will need:
 - C++14 enabled compiler
 - [Boost](http://www.boost.org/)
 - [SQLite](http://www.sqlite.org/)
-- [Cereal](http://uscilab.github.io/cereal/)
+- [FlatBuffers](https://github.com/google/flatbuffers)
 
 ###Windows
 
 When building for windows, please define the following environment variables:
 
 BOOST_ROOT
-CEREAL_ROOT
-SQLITE_ROOT
+FLATBUFFERS_ROOT
 GTEST_ROOT
+SQLITE_ROOT
 
 For example:
 
-BOOST_ROOT=C:\boost_1_57_0 
+BOOST_ROOT=C:\boost_1_57_0
 
 ###Linux and BSD
 
 For easier setup it is recommended to use [biicode](https://www.biicode.com/). 
 
-1. bii cpp:configure
-1. bii cpp:build
+1. bii configure
+1. bii build
 
-Otherwise builds requires CMake to be installed, files required to build are located under the build/ folder
+Otherwise builds requires CMake to be installed, files required to build are located under the build/ folder. Please note that those files are less frequently maintained.

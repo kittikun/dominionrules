@@ -25,6 +25,7 @@
 #define STYLE_IMPL_H
 
 #include <bitset>
+#include <flatbuffers/flatbuffers.h>
 
 #include <dominion/core/definitions.h>
 
@@ -32,6 +33,8 @@
 
 namespace Dominion
 {
+	struct FBStyle;
+
 	class StyleImpl : public DataItem
 	{
 		StyleImpl(const StyleImpl&) = delete;
@@ -44,6 +47,8 @@ namespace Dominion
 		StyleImpl(const uint_fast32_t);
 
 		static int LoadFromDB(void*, int, char**, char**);
+
+		flatbuffers::Offset<FBStyle> Serialize(flatbuffers::FlatBufferBuilder& fbb) const;
 
 	public:
 		std::bitset<EArchetype::ArchetypeCount> archetypes_;

@@ -25,6 +25,9 @@
 
 #include <memory>
 
+#include <generated/style_generated.h>
+#include <generated/style_array_generated.h>
+
 #include <dominion/api.h>
 #include <dominion/core/database.h>
 #include <dominion/character/style.h>
@@ -93,15 +96,10 @@ namespace DominionTest
 
 	TEST_F(DatabaseTest, GetStylesSerializiation)
 	{
-		auto styles = database_->GetStyles();
+		std::string buffer;
+		auto styles = database_->SerializeStyles(buffer);
+		flatbuffers::Verifier verifier(styles.get(), buffer.size());
 
-		for (auto style : styles) {
-			auto buffer = style->Serialize();
-
-			if (buffer == nullptr)
-				FAIL();
-
-			SUCCEED();
-		}
+		EXPECT_TRUE(Dominion::VerifyFBStyleArrayBuffer(verifier));
 	}
 } // namespace DominionTest

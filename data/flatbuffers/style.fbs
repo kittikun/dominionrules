@@ -1,9 +1,11 @@
-namespace Dominion.Generated;
+namespace Dominion;
 
-
-table Style {
-  name:string;
+table FBStyle {
+  id:uint; 
+  name:string (required, key);
   isBeast:bool = false;
   isPriest:bool = false;
   isWitch:bool = false;
 }
+
+root_type FBStyle;

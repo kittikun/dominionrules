@@ -172,6 +172,7 @@
     <ClInclude Include="..\..\include\dominion\core\platform.h" />
     <ClInclude Include="..\..\src\dominion\capi\capi.h" />
     <ClInclude Include="..\..\src\dominion\capi\cCharacterUtility.h" />
+    <ClInclude Include="..\..\src\dominion\capi\cDatabase.h" />
     <ClInclude Include="..\..\src\dominion\capi\cdice.h" />
     <ClInclude Include="..\..\src\dominion\capi\chelper.h" />
     <ClInclude Include="..\..\src\dominion\cereal\cereal_boost_uuid.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="..\..\src\dominion\api.cpp" />
     <ClCompile Include="..\..\src\dominion\capi\capi.cpp" />
     <ClCompile Include="..\..\src\dominion\capi\cCharacterUtility.cpp" />
+    <ClCompile Include="..\..\src\dominion\capi\cDatabase.cpp" />
     <ClCompile Include="..\..\src\dominion\capi\cdice.cpp" />
     <ClCompile Include="..\..\src\dominion\capi\chelper.cpp" />
     <ClCompile Include="..\..\src\dominion\character\attributes.cpp" />

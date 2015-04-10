@@ -53,8 +53,6 @@ namespace Dominion
 		Style(const std::shared_ptr<StyleImpl>& impl);
 		~Style();
 
-		uint8_t* Serialize() const;
-
 		const std::string& name() const;
 
 		bool isBeast() const;

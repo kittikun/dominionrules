@@ -123,6 +123,9 @@
     <ClInclude Include="..\..\src\dominion\impl\skill_template_impl.h">
       <Filter>src\impl</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\dominion\capi\cDatabase.h">
+      <Filter>src\capi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\dominion\character\attributes.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\dominion\character\skill_template.cpp">
       <Filter>src\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dominion\capi\cDatabase.cpp">
+      <Filter>src\capi</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
