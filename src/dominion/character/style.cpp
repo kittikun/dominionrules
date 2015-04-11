@@ -37,6 +37,11 @@ namespace Dominion
 	Style::~Style()
 	{}
 
+	uint_fast32_t Style::guid() const
+	{
+		return impl_->guid();
+	}
+
 	bool Style::isBeast() const
 	{
 		return impl_->archetypes_.test(EArchetype::ArchetypeBeast);

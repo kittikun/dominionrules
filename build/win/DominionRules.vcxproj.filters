@@ -22,11 +22,17 @@
     <Filter Include="src\impl">
       <UniqueIdentifier>{5ff3b2f6-9f80-4340-baf5-bab8f285f2ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="cereal">
-      <UniqueIdentifier>{da19db8e-92a3-4247-a75b-4addbc5bce46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\capi">
       <UniqueIdentifier>{0deae139-eed1-4810-a3ff-008e4815893d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{df1f4791-1eb7-4019-a667-31c7eb33d96c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="data\flatbuffers">
+      <UniqueIdentifier>{a798e9c5-4e9d-43a6-85a3-1ad66ac50d8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\capi">
+      <UniqueIdentifier>{f1500bd5-9a77-4e8d-b8b9-b5953c010664}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,9 +99,6 @@
     <ClInclude Include="..\..\include\dominion\character\style.h">
       <Filter>include\character</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dominion\cereal\cereal_boost_uuid.h">
-      <Filter>cereal</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\dominion\api.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -108,23 +111,23 @@
     <ClInclude Include="..\..\include\dominion\core\object.h">
       <Filter>include\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dominion\capi\capi.h">
-      <Filter>src\capi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dominion\capi\cdice.h">
-      <Filter>src\capi</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\dominion\capi\chelper.h">
-      <Filter>src\capi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\dominion\capi\cCharacterUtility.h">
       <Filter>src\capi</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\dominion\impl\skill_template_impl.h">
       <Filter>src\impl</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\dominion\capi\cDatabase.h">
-      <Filter>src\capi</Filter>
+    <ClInclude Include="..\..\include\dominion\capi\capi.h">
+      <Filter>include\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\capi\cCharacterUtility.h">
+      <Filter>include\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\capi\cDatabase.h">
+      <Filter>include\capi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dominion\capi\cdice.h">
+      <Filter>include\capi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -203,5 +206,13 @@
     <ClCompile Include="..\..\src\dominion\capi\cDatabase.cpp">
       <Filter>src\capi</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\data\flatbuffers\style.fbs">
+      <Filter>data\flatbuffers</Filter>
+    </None>
+    <None Include="..\..\data\flatbuffers\style_array.fbs">
+      <Filter>data\flatbuffers</Filter>
+    </None>
   </ItemGroup>
 </Project>

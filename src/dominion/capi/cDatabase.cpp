@@ -21,7 +21,7 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include "cDatabase.h"
+#include <dominion/capi/cDatabase.h>
 
 #include <dominion/core/database.h>
 

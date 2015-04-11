@@ -21,7 +21,7 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include "cCharacterUtility.h"
+#include <dominion/capi/cCharacterUtility.h>
 
 #include <dominion/character/character_utility.h>
 #include <dominion/core/dice.h>

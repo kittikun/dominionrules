@@ -21,43 +21,36 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include "capi.h"
+#include <fstream>
+#include <memory>
+#include <boost/format.hpp>
 
 #include <dominion/api.h>
-#include <dominion/core/dice.h>
-#include <dominion/character/character_utility.h>
+#include <dominion/character/style.h>
+#include <dominion/core/database.h>
 
-#include "../impl/api_impl.h"
-#include "../impl/dice_impl.h"
-#include "../impl/character_utility_impl.h"
-
-void InitializeFromMemory()
+void DoStyles(const std::shared_ptr<Dominion::DataBase>& db)
 {
-	CHelper::instance().InitializeFromMemory();
+	std::ofstream out("styles.csv");
+	auto styles = db->GetStyles();
+
+	out << "Id, Sprite" << std::endl;
+
+	for (auto style : styles) {
+		boost::format fmt = boost::format("%1%, %2%") % style->guid() % style->name();
+		out << boost::str(fmt) << std::endl;
+	}
+
+	out.close();
 }
 
-int GetCharacterCreationTool()
+int main(int argc, char **argv)
 {
-	const int ret = CHelper::instance().RegisterItem(std::move(CHelper::instance().GetAPI().lock()->GetCharacterCreationTool()));
+	auto api = std::make_unique<Dominion::Api>();
 
-	return ret;
+	api->InitializeFromMemory();
+
+	auto db = api->GetDatabase();
+
+	DoStyles(db);
 }
-
-int CreateDice()
-{
-	const int ret = CHelper::instance().RegisterItem(std::make_shared<Dominion::Dice>());
-
-	return ret;
-}
-
-//bool getSomeArrayData(int hCTool, int hDice, float* values, int size)
-//{
-//	auto cTool = CHelper::instance().GetItem<Dominion::CharacterUtility>(hCTool);
-//	auto dice = CHelper::instance().GetItem<Dominion::Dice>(hDice);
-//
-//	auto ar = cTool.lock()->attributesRoll(dice.lock());
-//
-//	ar->
-//
-//		return false;
-//}

@@ -42,9 +42,7 @@ namespace DominionTest
 
 	TEST_F(DiceTest, Roll)
 	{
-		uint_fast8_t rnd;
-
-		rnd = dice_->Roll();
+		auto rnd = dice_->Roll();
 
 		EXPECT_TRUE((rnd > 0) && (rnd <= 12));
 	}

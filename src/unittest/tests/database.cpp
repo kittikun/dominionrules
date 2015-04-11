@@ -84,6 +84,7 @@ namespace DominionTest
 		bool hasWitch = false;
 
 		for (auto style : styles) {
+			EXPECT_GT(style->guid(), static_cast<uint_fast32_t>(0));
 			EXPECT_GT(style->name().size(), static_cast<uint32_t>(0));
 
 			hasPriest |= style->isPriest();

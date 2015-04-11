@@ -21,48 +21,54 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#ifndef STYLE_H
-#define STYLE_H
+#include <gtest/gtest.h>
 
-#include <memory>
+#include <dominion/capi/capi.h>
+#include <dominion/capi/cdice.h>
+#include <dominion/capi/cDatabase.h>
 
-#include <dominion/core/definitions.h>
-#include <dominion/core/platform.h>
+#include <generated/style_generated.h>
+#include <generated/style_array_generated.h>
 
-namespace Dominion
+namespace DominionTest
 {
-	class StyleImpl;
-
-#ifdef _WIN32
-	template class DOMINION_API std::shared_ptr < StyleImpl > ;
-#endif
-
-	// (DR3.1.1 p26, 4-2 CHARACTER STYLES)
-	// Once you have thought about these questions, you may want to consider
-	// some classic RPG character styles.
-	class DOMINION_API Style
+	class CApiTest : public testing::Test
 	{
-		friend class CharacterUtility;
-
-		Style(const Style&) = delete;
-		Style& operator=(const Style&) = delete;
-		Style(Style&&) = delete;
-		Style& operator=(Style&&) = delete;
-
 	public:
-		Style(const std::shared_ptr<StyleImpl>& impl);
-		~Style();
-
-		uint_fast32_t guid() const;
-		const std::string& name() const;
-
-		bool isBeast() const;
-		bool isPriest() const;
-		bool isWitch() const;
-
-	private:
-		std::shared_ptr<StyleImpl> impl_;
+		CApiTest()
+		{
+			InitializeFromMemory();
+		}
 	};
-} // namespace Dominion
 
-#endif // STYLE_H
+	TEST_F(CApiTest, Dice)
+	{
+		auto handle = CreateDice();
+
+		EXPECT_GT(handle, 0);
+
+		auto rnd = Roll(handle);
+
+		EXPECT_TRUE((rnd > 0) && (rnd <= 12));
+
+		EXPECT_NO_THROW(DestroyDice(handle));
+	}
+
+	TEST_F(CApiTest, Styles)
+	{
+		auto handle = SerializeStyles();
+		auto size = GetStylesSize(handle);
+		EXPECT_GT(size, 0);
+
+		std::string buffer(size, 'e');
+
+		auto getRes = GetStylesBuffer(handle, &buffer[0]);
+
+		EXPECT_TRUE(getRes);
+
+		flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t *>(buffer.c_str()), size);
+		EXPECT_TRUE(Dominion::VerifyFBStyleArrayBuffer(verifier));
+
+		EXPECT_NO_THROW(ReleaseStylesBuffer(handle));
+	}
+} // namespace DominionTest
