@@ -24,8 +24,6 @@
 #ifndef C_DATABASE_H
 #define C_DATABASE_H
 
-#include <crtdefs.h>
-
 #include <dominion/core/platform.h>
 
 extern "C"
