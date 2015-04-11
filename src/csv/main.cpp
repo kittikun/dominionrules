@@ -44,9 +44,9 @@ void DoStyles(const std::shared_ptr<Dominion::DataBase>& db)
 	out.close();
 }
 
-int main(int argc, char **argv)
+int main(int, char**)
 {
-	auto api = std::make_unique<Dominion::Api>();
+	auto api = std::make_shared<Dominion::Api>();
 
 	api->InitializeFromMemory();
 

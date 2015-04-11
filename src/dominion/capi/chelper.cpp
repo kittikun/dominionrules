@@ -21,7 +21,9 @@
 // This work is compatible with the Dominion Rules role-playing system.To learn more about
 // Dominion Rules, visit the Dominion Rules web site at <http://www.dominionrules.org>
 
-#include "cHelper.h"
+#include "chelper.h"
+
+#include <climits>
 
 CHelper::CHelper()
 	: api_(std::make_shared<Dominion::Api>())
@@ -77,11 +79,5 @@ int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
 void CHelper::UnregisterFBBuffer(const int handle)
 {
 	if (FBBuffers_.erase(handle) != 1)
-		throw new std::exception("Item not removed");
-}
-
-void CHelper::UnregisterItem(const int handle)
-{
-	if (container_.erase(handle) != 1)
-		throw new std::exception("Item not removed");
+		throw new std::runtime_error("Item not removed");
 }
