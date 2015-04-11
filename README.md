@@ -27,8 +27,11 @@ You will need:
 When building for windows, please define the following environment variables:
 
 BOOST_ROOT
+
 FLATBUFFERS_ROOT
+
 GTEST_ROOT
+
 SQLITE_ROOT
 
 For example:
