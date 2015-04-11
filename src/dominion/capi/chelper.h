@@ -38,7 +38,7 @@ class CHelper
 public:
 	CHelper();
 
-	static CHelper& CHelper::instance();
+	static CHelper& instance();
 
 	std::weak_ptr<Dominion::Api> GetAPI() const;
 
@@ -55,10 +55,10 @@ public:
 
 	boost::optional<std::string> GetFBBuffer(const int handle) const;
 
-	const int RegisterItem(std::shared_ptr<Dominion::Object>);
+	int RegisterItem(std::shared_ptr<Dominion::Object>);
 	void UnregisterItem(const int);
 
-	const int RegisterFBBuffer(const std::string& buffer);
+	int RegisterFBBuffer(const std::string& buffer);
 	void UnregisterFBBuffer(const int);
 
 private:

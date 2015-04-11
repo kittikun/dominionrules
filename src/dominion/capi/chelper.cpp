@@ -52,7 +52,7 @@ boost::optional<std::string> CHelper::GetFBBuffer(const int handle) const
 	return boost::none;
 }
 
-const int CHelper::RegisterFBBuffer(const std::string& buffer)
+int CHelper::RegisterFBBuffer(const std::string& buffer)
 {
 	std::uniform_int_distribution<> dist(0, INT_MAX);
 
@@ -63,7 +63,7 @@ const int CHelper::RegisterFBBuffer(const std::string& buffer)
 	return rng;
 }
 
-const int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
+int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
 {
 	std::uniform_int_distribution<> dist(0, INT_MAX);
 
