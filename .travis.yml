@@ -21,13 +21,8 @@ before_install:
 - if [ "$CXX" == "clang++" ]; then sudo apt-get install clang-3.5; fi
 - if [ "$CXX" == "clang++" ]; then sudo update-alternatives --install /usr/local/bin/clang++ clang++ /usr/local/bin/clang++-3.5 50; fi
 install:
-- wget http://www.biicode.com/downloads/latest/ubuntu64
-- mv ubuntu64 bii-ubuntu64.deb
-- (sudo dpkg -i bii-ubuntu64.deb) && sudo apt-get -f install
-- rm bii-ubuntu64.deb
-- wget https://s3.amazonaws.com/biibinaries/thirdparty/cmake-3.0.2-Linux-64.tar.gz
-- tar -xzf cmake-3.0.2-Linux-64.tar.gz
-- sudo cp -fR cmake-3.0.2-Linux-64/* /usr
+- wget http://apt.biicode.com/install.sh && chmod +x install.sh && ./install.sh
+- bii setup:cpp
 - git clone https://github.com/google/flatbuffers.git
 - cd flatbuffers
 - cmake .
