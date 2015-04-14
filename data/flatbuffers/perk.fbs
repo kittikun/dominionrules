@@ -1,0 +1,17 @@
+namespace FBDominion;
+
+table Perk {
+  id:uint; 
+  name:string (required, key);
+  roll:ubyte;
+  bonus:ubyte;
+  target:uint; 
+  canBeast:bool;
+  canDwarf:bool;
+  canElf:bool;
+  canHalfling:bool;
+  canHuman:bool;
+  canHumanoid:bool;
+}
+
+root_type Perk;

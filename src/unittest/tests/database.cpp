@@ -27,6 +27,8 @@
 
 #include <generated/style_generated.h>
 #include <generated/style_array_generated.h>
+#include <generated/perk_generated.h>
+#include <generated/perk_array_generated.h>
 
 #include <dominion/api.h>
 #include <dominion/core/database.h>
@@ -101,6 +103,15 @@ namespace DominionTest
 		auto styles = database_->SerializeStyles(buffer);
 		flatbuffers::Verifier verifier(styles.get(), buffer.size());
 
-		EXPECT_TRUE(Dominion::VerifyFBStyleArrayBuffer(verifier));
+		EXPECT_TRUE(FBDominion::VerifyStyleArrayBuffer(verifier));
+	}
+
+	TEST_F(DatabaseTest, GetPerksSerialization)
+	{
+		std::string buffer;
+		auto perks = database_->SerializePerks(buffer);
+		flatbuffers::Verifier verifier(perks.get(), buffer.size());
+
+		EXPECT_TRUE(FBDominion::VerifyPerkArrayBuffer(verifier));
 	}
 } // namespace DominionTest

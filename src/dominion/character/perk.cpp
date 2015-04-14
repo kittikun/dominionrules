@@ -34,6 +34,11 @@ namespace Dominion
 	Perk::~Perk()
 	{}
 
+	uint_fast32_t Perk::guid() const
+	{
+		return impl_->guid();
+	}
+
 	const std::string& Perk::name()
 	{
 		return impl_->name_;

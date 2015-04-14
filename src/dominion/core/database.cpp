@@ -31,6 +31,8 @@
 
 #include <generated/style_generated.h>
 #include <generated/style_array_generated.h>
+#include <generated/perk_generated.h>
+#include <generated/perk_array_generated.h>
 
 #include "../impl/database_impl.h"
 #include "../impl/perk_impl.h"
@@ -95,21 +97,40 @@ namespace Dominion
 	{
 		flatbuffers::FlatBufferBuilder fbb;
 		auto styles = impl_->GetList<StyleImpl>("select id from style");
-
-		std::vector<flatbuffers::Offset<FBStyle>> temp;
-
-		styles.reserve(styles.size());
+		std::vector<flatbuffers::Offset<FBDominion::Style>> temp;
 
 		for (auto style : styles)
 			temp.push_back(style->Serialize(fbb));
 
 		auto vst = fbb.CreateVectorOfSortedTables(&temp[0], temp.size());
 
-		auto mloc = CreateFBStyleArray(fbb, vst);
+		auto mloc = FBDominion::CreateStyleArray(fbb, vst);
 
-		FinishFBStyleArrayBuffer(fbb, mloc);
+		FBDominion::FinishStyleArrayBuffer(fbb, mloc);
 
 		auto bufferpointer = reinterpret_cast<const char *>(fbb.GetBufferPointer());
+
+		buffer.assign(bufferpointer, bufferpointer + fbb.GetSize());
+
+		return fbb.ReleaseBufferPointer();
+	}
+
+	flatbuffers::unique_ptr_t DataBase::SerializePerks(std::string& buffer) const
+	{
+		flatbuffers::FlatBufferBuilder fbb;
+		auto perks = impl_->GetList<PerkImpl>("select id from perk");
+		std::vector<flatbuffers::Offset<FBDominion::Perk>> temp;
+
+		for (auto perk : perks)
+			temp.push_back(perk->Serialize(fbb));
+
+		auto vst = fbb.CreateVectorOfSortedTables(&temp[0], temp.size());
+		auto mloc = FBDominion::CreatePerkArray(fbb, vst);
+
+		FBDominion::FinishPerkArrayBuffer(fbb, mloc);
+
+		auto bufferpointer = reinterpret_cast<const char *>(fbb.GetBufferPointer());
+
 		buffer.assign(bufferpointer, bufferpointer + fbb.GetSize());
 
 		return fbb.ReleaseBufferPointer();

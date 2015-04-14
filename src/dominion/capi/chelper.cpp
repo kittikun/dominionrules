@@ -76,8 +76,14 @@ int CHelper::RegisterItem(std::shared_ptr<Dominion::Object> item)
 	return rng;
 }
 
+void CHelper::UnregisterItem(const int handle)
+{
+	if (container_.erase(handle) != 1)
+		throw new std::runtime_error("Item not removed");
+}
+
 void CHelper::UnregisterFBBuffer(const int handle)
 {
 	if (FBBuffers_.erase(handle) != 1)
-		throw new std::runtime_error("Item not removed");
+		throw new std::runtime_error("Buffer not removed");
 }

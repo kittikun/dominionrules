@@ -27,15 +27,7 @@
 
 #include "chelper.h"
 
-int SerializeStyles()
-{
-	std::string buffer;
-	CHelper::instance().GetAPI().lock()->GetDatabase()->SerializeStyles(buffer);
-
-	return CHelper::instance().RegisterFBBuffer(buffer);
-}
-
-int GetStylesSize(const int handle)
+int GetBufferSize(const int handle)
 {
 	auto res = CHelper::instance().GetFBBuffer(handle);
 
@@ -45,7 +37,7 @@ int GetStylesSize(const int handle)
 	return static_cast<int>(res->size());
 }
 
-bool GetStylesBuffer(const int handle, char* dst)
+bool GetBuffer(const int handle, char* dst)
 {
 	auto src = CHelper::instance().GetFBBuffer(handle);
 
@@ -57,7 +49,23 @@ bool GetStylesBuffer(const int handle, char* dst)
 	return true;
 }
 
-void ReleaseStylesBuffer(const int handle)
+void ReleaseBuffer(const int handle)
 {
 	CHelper::instance().UnregisterFBBuffer(handle);
+}
+
+int SerializeStyles()
+{
+	std::string buffer;
+	CHelper::instance().GetAPI().lock()->GetDatabase()->SerializeStyles(buffer);
+
+	return CHelper::instance().RegisterFBBuffer(buffer);
+}
+
+int DOMINION_API SerializePerks()
+{
+	std::string buffer;
+	CHelper::instance().GetAPI().lock()->GetDatabase()->SerializePerks(buffer);
+
+	return CHelper::instance().RegisterFBBuffer(buffer);
 }

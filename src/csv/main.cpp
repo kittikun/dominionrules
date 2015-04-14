@@ -26,8 +26,24 @@
 #include <boost/format.hpp>
 
 #include <dominion/api.h>
+#include <dominion/character/perk.h>
 #include <dominion/character/style.h>
 #include <dominion/core/database.h>
+
+void DoPerks(const std::shared_ptr<Dominion::DataBase>& db)
+{
+	std::ofstream out("perks.csv");
+	auto perks = db->GetPerks();
+
+	out << "Id, LocalizationKey, SpriteName" << std::endl;
+
+	for (auto perk : perks) {
+		boost::format fmt = boost::format("%1%,,") % perk->guid();
+		out << boost::str(fmt) << std::endl;
+	}
+
+	out.close();
+}
 
 void DoStyles(const std::shared_ptr<Dominion::DataBase>& db)
 {
@@ -52,5 +68,6 @@ int main(int, char**)
 
 	auto db = api->GetDatabase();
 
+	DoPerks(db);
 	DoStyles(db);
 }

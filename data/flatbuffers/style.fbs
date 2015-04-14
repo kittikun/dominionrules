@@ -1,6 +1,6 @@
-namespace Dominion;
+namespace FBDominion;
 
-table FBStyle {
+table Style {
   id:uint; 
   name:string (required, key);
   isBeast:bool = false;
@@ -8,4 +8,4 @@ table FBStyle {
   isWitch:bool = false;
 }
 
-root_type FBStyle;
+root_type Style;

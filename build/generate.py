@@ -15,8 +15,8 @@ for file in files:
     if 'CYGWIN_NT' in platform.system():
         out = '../include/generated'
         input = file
-        call(['./flatc', '-n', input])
-        #call(['./flatc', '-o', out, '-c', input])
+        #call(['./flatc', '-n', input])
+        call(['./flatc', '-o', out, '-c', input])
     else:
         out = os.path.realpath('../include/generated')
         input = os.path.realpath(file)

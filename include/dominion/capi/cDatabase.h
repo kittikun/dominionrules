@@ -28,10 +28,12 @@
 
 extern "C"
 {
+	int DOMINION_API GetBufferSize(const int);
+	bool DOMINION_API GetBuffer(const int, char*);
+	void DOMINION_API ReleaseBuffer(const int);
+
 	int DOMINION_API SerializeStyles();
-	int DOMINION_API GetStylesSize(const int);
-	bool DOMINION_API GetStylesBuffer(const int, char*);
-	void DOMINION_API ReleaseStylesBuffer(const int);
+	int DOMINION_API SerializePerks();
 }
 
 #endif // C_DATABASE_H

@@ -49,6 +49,7 @@ namespace Dominion
 		Perk(const std::shared_ptr<PerkImpl>& impl);
 		~Perk();
 
+		uint_fast32_t guid() const;
 		const std::string& name();
 
 	private:

@@ -57,18 +57,36 @@ namespace DominionTest
 	TEST_F(CApiTest, Styles)
 	{
 		auto handle = SerializeStyles();
-		auto size = GetStylesSize(handle);
+		auto size = GetBufferSize(handle);
 		EXPECT_GT(size, 0);
 
 		std::string buffer(size, 'e');
 
-		auto getRes = GetStylesBuffer(handle, &buffer[0]);
+		auto getRes = GetBuffer(handle, &buffer[0]);
 
 		EXPECT_TRUE(getRes);
 
 		flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t *>(buffer.c_str()), size);
-		EXPECT_TRUE(Dominion::VerifyFBStyleArrayBuffer(verifier));
+		EXPECT_TRUE(FBDominion::VerifyStyleArrayBuffer(verifier));
 
-		EXPECT_NO_THROW(ReleaseStylesBuffer(handle));
+		EXPECT_NO_THROW(ReleaseBuffer(handle));
+	}
+
+	TEST_F(CApiTest, Perks)
+	{
+		auto handle = SerializePerks();
+		auto size = GetBufferSize(handle);
+		EXPECT_GT(size, 0);
+
+		std::string buffer(size, 'e');
+
+		auto getRes = GetBuffer(handle, &buffer[0]);
+
+		EXPECT_TRUE(getRes);
+
+		flatbuffers::Verifier verifier(reinterpret_cast<const uint8_t *>(buffer.c_str()), size);
+		EXPECT_TRUE(FBDominion::VerifyStyleArrayBuffer(verifier));
+
+		EXPECT_NO_THROW(ReleaseBuffer(handle));
 	}
 } // namespace DominionTest

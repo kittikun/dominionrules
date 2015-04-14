@@ -26,10 +26,16 @@
 
 #include <memory>
 #include <bitset>
+#include <flatbuffers/flatbuffers.h>
 
 #include <dominion/core/definitions.h>
 
 #include "dataitem.h"
+
+namespace FBDominion
+{
+	struct Perk;
+}
 
 namespace Dominion
 {
@@ -46,6 +52,9 @@ namespace Dominion
 		static int LoadFromDB(void*, int, char**, char**);
 
 		bool isRaceUsable(ERace race) const;
+
+		flatbuffers::Offset<FBDominion::Perk> Serialize(flatbuffers::FlatBufferBuilder& fbb) const;
+
 	public:
 		EPerkType type_;
 		uint_fast8_t roll_;

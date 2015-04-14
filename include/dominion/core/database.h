@@ -55,10 +55,8 @@ namespace Dominion
 		std::vector<std::shared_ptr<SkillTemplate>> GetSkillTemplates() const;
 		std::vector<std::shared_ptr<Style>> GetStyles() const;
 
-		// Returned tuple
-		// 0: buffer
-		// 1: size
 		flatbuffers::unique_ptr_t SerializeStyles(std::string&) const;
+		flatbuffers::unique_ptr_t SerializePerks(std::string&) const;
 
 		uint32_t GetVersion() const;
 

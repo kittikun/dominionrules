@@ -1,9 +1,9 @@
 include "style.fbs";
 
-namespace Dominion;
+namespace FBDominion;
 
-table FBStyleArray {
-    values: [FBStyle];
+table StyleArray {
+    values: [Style];
 }
 
-root_type FBStyleArray;
+root_type StyleArray;

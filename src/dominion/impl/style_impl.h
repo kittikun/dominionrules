@@ -31,10 +31,13 @@
 
 #include "dataitem.h"
 
+namespace FBDominion
+{
+	struct Style;
+}
+
 namespace Dominion
 {
-	struct FBStyle;
-
 	class StyleImpl : public DataItem
 	{
 		StyleImpl(const StyleImpl&) = delete;
@@ -48,7 +51,7 @@ namespace Dominion
 
 		static int LoadFromDB(void*, int, char**, char**);
 
-		flatbuffers::Offset<FBStyle> Serialize(flatbuffers::FlatBufferBuilder& fbb) const;
+		flatbuffers::Offset<FBDominion::Style> Serialize(flatbuffers::FlatBufferBuilder& fbb) const;
 
 	public:
 		std::bitset<EArchetype::ArchetypeCount> archetypes_;

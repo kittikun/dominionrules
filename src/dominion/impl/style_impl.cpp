@@ -65,10 +65,9 @@ namespace Dominion
 		return 0;
 	}
 
-	flatbuffers::Offset<FBStyle> StyleImpl::Serialize(flatbuffers::FlatBufferBuilder& fbb) const
+	flatbuffers::Offset<FBDominion::Style> StyleImpl::Serialize(flatbuffers::FlatBufferBuilder& fbb) const
 	{
-		FBStyleBuilder builder(fbb);
-
+		FBDominion::StyleBuilder builder(fbb);
 		auto str = fbb.CreateString(name_);
 
 		builder.add_id(guid());

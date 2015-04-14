@@ -1,0 +1,9 @@
+include "perk.fbs";
+
+namespace FBDominion;
+
+table PerkArray {
+    values: [Perk];
+}
+
+root_type PerkArray;
