@@ -41,6 +41,5 @@ script:
 - pwd
 - bii configure
 - bii build
-- ./bin/kittikun_dominionrules_src_unittest_main
-
+- bii test
 
