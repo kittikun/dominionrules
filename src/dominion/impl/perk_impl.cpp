@@ -32,93 +32,95 @@
 
 namespace Dominion
 {
-	PerkImpl::PerkImpl(const uint_fast32_t id) :
-		DataItem(id),
-		bonus_(0),
-		target_(-1)
-	{}
+    PerkImpl::PerkImpl(const uint_fast32_t id) :
+        DataItem(id),
+        bonus_(0),
+        target_(-1)
+    {}
 
-	int PerkImpl::LoadFromDB(void* data, int argc, char** argv, char** col)
-	{
-		DatabaseImpl* db = static_cast<DatabaseImpl*>(data);
-		std::shared_ptr<PerkImpl> perk;
+    int PerkImpl::LoadFromDB(void* data, int argc, char** argv, char** col)
+    {
+        DatabaseImpl* db = static_cast<DatabaseImpl*>(data);
+        std::shared_ptr<PerkImpl> perk;
 
-		for (int i = 0; i < argc; ++i) {
-			if (argv[i] == nullptr)
-				continue;
+        for (int i = 0; i < argc; ++i) {
+            if (argv[i] == nullptr)
+                continue;
 
-			if (strcmp(col[i], "Id") == 0) {
-				uint_fast32_t id = ClassID_Perk + boost::lexical_cast<uint_fast32_t>(argv[i]);
-				perk = std::make_shared<PerkImpl>(id);
-			} else if (strcmp(col[i], "type") == 0) {
-				perk->type_ = static_cast<EPerkType>(boost::lexical_cast<int32_t>(argv[i]));
-			} else if (strcmp(col[i], "name") == 0) {
-				perk->name_ = argv[i];
-			} else if (strcmp(col[i], "roll") == 0) {
-				perk->roll_ = (uint_fast8_t)boost::lexical_cast<int32_t>(argv[i]);
-			} else if (strcmp(col[i], "target") == 0) {
-				int32_t target = boost::lexical_cast<int32_t>(argv[i]);
+            if (strcmp(col[i], "Id") == 0) {
+                uint_fast32_t id = ClassID_Perk + boost::lexical_cast<uint_fast32_t>(argv[i]);
+                perk = std::make_shared<PerkImpl>(id);
+            } else if (strcmp(col[i], "type") == 0) {
+                perk->type_ = static_cast<EPerkType>(boost::lexical_cast<int32_t>(argv[i]));
+            } else if (strcmp(col[i], "name") == 0) {
+                perk->name_ = argv[i];
+            } else if (strcmp(col[i], "roll") == 0) {
+                perk->roll_ = (uint_fast8_t)boost::lexical_cast<int32_t>(argv[i]);
+            } else if (strcmp(col[i], "target") == 0) {
+                int32_t target = boost::lexical_cast<int32_t>(argv[i]);
 
-				switch (perk->type_) {
-					case EPerkType::Attribute:
-						perk->target_ = target;
-						break;
+                switch (perk->type_) {
+                    case EPerkType::Attribute:
+                        perk->target_ = target;
+                        break;
 
-					case EPerkType::Skill:
-						perk->target_ = ClassID_Skill_Template + target;
-						break;
+                    case EPerkType::Skill:
+                        perk->target_ = ClassID_Skill_Template + target;
+                        break;
 
-					case EPerkType::Advancement_Points:
-					case EPerkType::Passive:
-						break;
+                    case EPerkType::Advancement_Points:
+                    case EPerkType::Passive:
+                        break;
 
-					default:
-						throw std::out_of_range("perk target");
-						return 1;
-				}
-			} else if (strcmp(col[i], "bonus") == 0) {
-				perk->bonus_ = (uint_fast8_t)boost::lexical_cast<int32_t>(argv[i]);
-			} else if (strcmp(col[i], "isHuman") == 0) {
-				perk->usableRace_[ERace::RaceHuman] = boost::lexical_cast<bool>(argv[i]);
-			} else if (strcmp(col[i], "isElf") == 0) {
-				perk->usableRace_[ERace::RaceElf] = boost::lexical_cast<bool>(argv[i]);
-			} else if (strcmp(col[i], "isDwarf") == 0) {
-				perk->usableRace_[ERace::RaceDwarf] = boost::lexical_cast<bool>(argv[i]);
-			} else if (strcmp(col[i], "isHalfling") == 0) {
-				perk->usableRace_[ERace::RaceHalfling] = boost::lexical_cast<bool>(argv[i]);
-			} else if (strcmp(col[i], "isHumanoid") == 0) {
-				perk->usableRace_[ERace::RaceHumanoid] = boost::lexical_cast<bool>(argv[i]);
-			} else if (strcmp(col[i], "isBeast") == 0) {
-				perk->usableRace_[ERace::RaceBeast] = boost::lexical_cast<bool>(argv[i]);
-			}
-		}
+                    default:
+                        throw std::out_of_range("perk target");
+                        return 1;
+                }
+            } else if (strcmp(col[i], "bonus") == 0) {
+                perk->bonus_ = (uint_fast8_t)boost::lexical_cast<int32_t>(argv[i]);
+            } else if (strcmp(col[i], "isHuman") == 0) {
+                perk->usableRace_[ERace::RaceHuman] = boost::lexical_cast<bool>(argv[i]);
+            } else if (strcmp(col[i], "isElf") == 0) {
+                perk->usableRace_[ERace::RaceElf] = boost::lexical_cast<bool>(argv[i]);
+            } else if (strcmp(col[i], "isDwarf") == 0) {
+                perk->usableRace_[ERace::RaceDwarf] = boost::lexical_cast<bool>(argv[i]);
+            } else if (strcmp(col[i], "isHalfling") == 0) {
+                perk->usableRace_[ERace::RaceHalfling] = boost::lexical_cast<bool>(argv[i]);
+            } else if (strcmp(col[i], "isHumanoid") == 0) {
+                perk->usableRace_[ERace::RaceHumanoid] = boost::lexical_cast<bool>(argv[i]);
+            } else if (strcmp(col[i], "isBeast") == 0) {
+                perk->usableRace_[ERace::RaceBeast] = boost::lexical_cast<bool>(argv[i]);
+            }
+        }
 
-		db->AddData<PerkImpl>(perk);
+        db->AddData<PerkImpl>(perk);
 
-		return 0;
-	}
+        return 0;
+    }
 
-	bool PerkImpl::isRaceUsable(ERace race) const
-	{
-		return usableRace_[race];
-	}
+    bool PerkImpl::isRaceUsable(ERace race) const
+    {
+        return usableRace_[race];
+    }
 
-	flatbuffers::Offset<FBDominion::Perk> PerkImpl::Serialize(flatbuffers::FlatBufferBuilder& fbb) const
-	{
-		FBDominion::PerkBuilder builder(fbb);
-		auto str = fbb.CreateString(name_);
+    flatbuffers::Offset<FBDominion::Perk> PerkImpl::Serialize(flatbuffers::FlatBufferBuilder& fbb) const
+    {
+        FBDominion::PerkBuilder builder(fbb);
+        auto str = fbb.CreateString(name_);
 
-		builder.add_id(guid());
-		builder.add_name(str);
-		builder.add_roll(roll_);
-		builder.add_bonus(bonus_);
-		builder.add_canBeast(usableRace_.test(RaceBeast));
-		builder.add_canDwarf(usableRace_.test(RaceDwarf));
-		builder.add_canElf(usableRace_.test(RaceElf));
-		builder.add_canHalfling(usableRace_.test(RaceHalfling));
-		builder.add_canHuman(usableRace_.test(RaceHuman));
-		builder.add_canHumanoid(usableRace_.test(RaceHumanoid));
+        builder.add_id(guid());
+        builder.add_name(str);
+        builder.add_roll(roll_);
+        builder.add_bonus(bonus_);
+        builder.add_target(target_);
+        builder.add_type((uint_fast8_t)type_);
+        builder.add_canBeast(usableRace_.test(RaceBeast));
+        builder.add_canDwarf(usableRace_.test(RaceDwarf));
+        builder.add_canElf(usableRace_.test(RaceElf));
+        builder.add_canHalfling(usableRace_.test(RaceHalfling));
+        builder.add_canHuman(usableRace_.test(RaceHuman));
+        builder.add_canHumanoid(usableRace_.test(RaceHumanoid));
 
-		return builder.Finish();
-	}
+        return builder.Finish();
+    }
 }

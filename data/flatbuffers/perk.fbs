@@ -6,6 +6,7 @@ table Perk {
   roll:ubyte;
   bonus:ubyte;
   target:uint; 
+  type:ubyte;
   canBeast:bool;
   canDwarf:bool;
   canElf:bool;

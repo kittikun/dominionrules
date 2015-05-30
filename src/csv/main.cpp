@@ -32,42 +32,42 @@
 
 void DoPerks(const std::shared_ptr<Dominion::DataBase>& db)
 {
-	std::ofstream out("perks.csv");
-	auto perks = db->GetPerks();
+    std::ofstream out("perks.csv");
+    auto perks = db->GetPerks();
 
-	out << "Id, LocalizationKey, SpriteName" << std::endl;
+    out << "Id, LocalizationKey, SpriteName" << std::endl;
 
-	for (auto perk : perks) {
-		boost::format fmt = boost::format("%1%,,") % perk->guid();
-		out << boost::str(fmt) << std::endl;
-	}
+    for (auto perk : perks) {
+        boost::format fmt = boost::format("%1%,,") % perk->guid();
+        out << boost::str(fmt) << std::endl;
+    }
 
-	out.close();
+    out.close();
 }
 
 void DoStyles(const std::shared_ptr<Dominion::DataBase>& db)
 {
-	std::ofstream out("styles.csv");
-	auto styles = db->GetStyles();
+    std::ofstream out("styles.csv");
+    auto styles = db->GetStyles();
 
-	out << "Id, Sprite" << std::endl;
+    out << "Id, LocalizationKey, SpriteName" << std::endl;
 
-	for (auto style : styles) {
-		boost::format fmt = boost::format("%1%, %2%") % style->guid() % style->name();
-		out << boost::str(fmt) << std::endl;
-	}
+    for (auto style : styles) {
+        boost::format fmt = boost::format("%1%,,") % style->guid();
+        out << boost::str(fmt) << std::endl;
+    }
 
-	out.close();
+    out.close();
 }
 
 int main(int, char**)
 {
-	auto api = std::make_shared<Dominion::Api>();
+    auto api = std::make_shared<Dominion::Api>();
 
-	api->InitializeFromMemory();
+    api->InitializeFromMemory();
 
-	auto db = api->GetDatabase();
+    auto db = api->GetDatabase();
 
-	DoPerks(db);
-	DoStyles(db);
+    DoPerks(db);
+    DoStyles(db);
 }
